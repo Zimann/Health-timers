@@ -1,0 +1,36 @@
+<div class="login-form-wrapper">
+  <div class="login-form-body">
+    <h2>Log in</h2>
+    <form>
+      <label for="email"></label>
+      <input required id="email" formControlName="email" placeholder="Email" type="email">
+      <small>
+        Email is not valid
+      </small>
+      <label for="password"></label>
+      <input required id="password" formControlName="password" placeholder="Password" type="password">
+      <small>
+        Password is too short (Min 9 chars)
+      </small>
+      <button type="submit">Log in
+      </button>
+      <span class="loader"></span>
+    </form>
+    <p class="forgotten-password">Forgot password?</p>
+    <form class="forgotten-form">
+      <label for="forgottenPass"></label>
+      <input #forgottenPassRef id="forgottenPass" type="email" formControlName="forgottenPassEmail"
+             placeholder="Your Email Address">
+      <button class="forgot-submit">
+        <i class="fas fa-check-circle"></i>
+      </button>
+      <small>
+        A new password shall be sent to the provided email address
+      </small>
+      <small class="invalid-forgotten">
+        Invalid Email Format
+      </small>
+      <small class="forgotten-confirmation">Password away!</small>
+    </form>
+  </div>
+</div>

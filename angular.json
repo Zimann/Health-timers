@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "health-timers"
+    }
+  },
+  "defaultProject": "health-timers",
+  "cli": {
+    "analytics": "ab73d4f8-1717-4799-8826-d07ff1bfaad4"
+  }
 }

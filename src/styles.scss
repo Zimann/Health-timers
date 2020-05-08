@@ -1,1 +1,74 @@
+@import 'app/shared/general-style/general-style.scss';
+
 /* You can add global styles to this file, and also import other style files */
+
+html, body {
+  height: 100%;
+  //background-image: linear-gradient(15deg, #6e45e2 0%, #88d3ce 100%);
+  margin: 0;
+  overflow: hidden;
+  color: #454c5d;
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #362843;
+  font-weight: bold;
+  opacity: 1; /* Firefox */
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+/* Angular Material styling */
+.mat-form-field-underline {
+  height: 0 !important;
+}
+
+.mat-focused .mat-form-field-label {
+
+  .mat-form-field-label {
+    color: $base-text-color;
+  }
+}
+
+input.mat-input-element {
+  color: $input-text-color;
+  padding-left: 20px;
+  caret-color: $input-text-color;
+}
+
+.mat-focused {
+  .mat-form-field-underline {
+    .mat-form-field-ripple {
+      background: $input-text-color;
+      width: calc(100% - 40px);
+      margin-left: 20px;
+    }
+  }
+}
+
+.mat-form-field-invalid {
+
+  .mat-form-field-underline {
+
+    .mat-form-field-ripple {
+      background: transparent;
+    }
+  }
+}
+
+.mat-form-field-appearance-legacy {
+
+  .mat-form-field-label {
+    color: $base-text-color;
+  }
+}
+
+.mat-focused {
+  .mat-form-field-label {
+    color: $input-text-color !important;
+  }
+}
+

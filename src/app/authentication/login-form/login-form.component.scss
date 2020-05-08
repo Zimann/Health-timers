@@ -1,0 +1,97 @@
+@import '../common-form-styles/common-form-styles';
+@import '../../shared/general-style/general-style';
+
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  flex-direction: column;
+  background: white;
+
+  .login-form-body {
+    transition: all 0.6s ease-in-out;
+    transition-delay: .05s;
+    width: 100%;
+    transform: translateZ(0);
+
+    small {
+      &:nth-of-type(1) {
+        margin-top: 36px;
+      }
+
+      &:nth-of-type(2) {
+        margin-top: 97px;
+      }
+    }
+  }
+
+  .forgotten-password {
+    font-size: 11px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 26%;
+    cursor: pointer;
+    z-index: 1;
+  }
+
+  form {
+
+    &.bring-in-forgotten {
+      transform: translateX(0) !important;
+    }
+
+    &.forgotten-form {
+      margin-top: 10px;
+      position: absolute;
+      align-items: center;
+      width: 100%;
+      transition: all .6s ease-in-out;
+      transform: translateX(-724px);
+
+      small {
+        color: $base-text-color;
+        font-size: 13px;
+
+        &.invalid-forgotten {
+          margin-top: 28px;
+          color: #ff5858;
+        }
+
+        &.forgotten-confirmation {
+          color: $confirmation-color;
+        }
+      }
+
+      button {
+        margin-top: 0;
+        position: absolute;
+        right: 40px;
+        border: none;
+        background: none;
+        z-index: 3;
+        cursor: pointer;
+
+        &:disabled {
+          cursor: default;
+        }
+
+        i {
+          font-size: 18px;
+          pointer-events: none;
+        }
+      }
+    }
+
+    &:nth-last-of-type {
+
+      label {
+        display: none;
+      }
+    }
+  }
+}
+
+.login-messages {
+  bottom: 47px;
+}
