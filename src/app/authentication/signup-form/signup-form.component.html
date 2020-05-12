@@ -1,24 +1,24 @@
 
 <div class="signup-form-wrapper">
-  <div class="signup-form-body">
+  <div class="signup-form-body" [ngClass]="{'move-sign-up-form':formMoveInitiated}">
     <h2>Sign up</h2>
     <form>
       <label for="email_sign_up"></label>
-      <input required id="email_sign_up" formControlName="email" placeholder="Email" type="email">
+      <input required id="email_sign_up"  placeholder="Email" type="email">
       <small>
         Email is not valid
       </small>
       <label for="password_sign_up"></label>
-      <input required id="password_sign_up" formControlName="password" placeholder="Password" type="password">
+      <input required id="password_sign_up" placeholder="Password" type="password">
       <small>
         Password is too short (Min 9 chars)
       </small>
       <button type="submit">Sign up</button>
-      <span class="loader"></span>
+      <span *ngIf="(loaderSub | async) === false" class="loader" class="loader"></span>
     </form>
   </div>
 </div>
 <div class="notification-messages signup-messages">
-  <p>Thank you for joining us!<br> All you have to do now is log in on the left side.</p>
+  <p *ngIf="(isUserSignedUp | async) === true">Thank you for joining us!<br> All you have to do now is log in on the left side.</p>
   <p class="submission-error"></p>
 </div>
