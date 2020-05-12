@@ -1,7 +1,6 @@
 <div [ngClass]="{'move-main-color-layer': slideElements}" class="floating-layout-wrapper">
 
   <div class="floating-texts-wrapper">
-
     <div [ngClass]="{'move-login-text': slideElements}" class="floating-text-login">
       <h2>Howdy chief!</h2>
       <p>Please fill in the details so that we start getting to know you!</p>
@@ -16,7 +15,6 @@
         *ngIf="(isUserSignedUp | async) !== true " (click)="toggleFormMovements()">Sign up
       </button>
     </div>
-
   </div>
 
 </div>

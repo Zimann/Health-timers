@@ -4,14 +4,13 @@
 
 html, body {
   height: 100%;
-  //background-image: linear-gradient(15deg, #6e45e2 0%, #88d3ce 100%);
   margin: 0;
   overflow: hidden;
-  color: #454c5d;
+  color: $base-text-color;
 }
 
 ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-  color: white;
+  color: $input-text-color;
   font-weight: bold;
   opacity: 1; /* Firefox */
 }

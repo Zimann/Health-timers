@@ -4,7 +4,7 @@ $login-input-background: linear-gradient(-60deg, #790909 0%, #ff6e6e 100%);
 $signup-input-background: linear-gradient(-60deg, #ff6e6e 0%, #790909 100%);
 
 h2 {
-  color: #362843;
+  color: $input-text-color;
   text-align: center;
 }
 
@@ -16,10 +16,10 @@ form {
 
   input {
     border: none;
-    background-image: $login-input-background;
+    background: $login-input-background;
     border-radius: 4px;
     outline: none;
-    color: white;
+    color: $input-text-color;
     width: 75%;
     font-weight: bold;
     letter-spacing: 0.08rem;

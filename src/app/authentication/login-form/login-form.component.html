@@ -2,7 +2,7 @@
   <div class="login-form-body" [ngStyle]="{'transform': bringInForgottenPass ? 'translateY(-50px)': 'translateY(0)'}"
        [ngClass]="{'move-log-in-form':formMoveInitiated}">
     <h2>Log in</h2>
-    <form [formGroup]="loginForm" (ngSubmit)="onSubmitLogin()">
+    <form [formGroup]=loginForm (ngSubmit)="onSubmitLogin()">
       <label for="email"></label>
       <input required id="email" formControlName="email" placeholder="Email" type="email">
       <small [class.hide-input-validation]="(loginEmail.valid || loginEmail.untouched) && loginChecker.email">
@@ -26,11 +26,12 @@
       <label for="forgottenPass"></label>
       <input #forgottenPassRef id="forgottenPass" type="email" formControlName="forgottenPassEmail"
              placeholder="Your Email Address">
-      <button class="forgot-submit"
-              [disabled]="forgottenSubmitted ||
-              forgottenPassEmail.pristine ||
-              forgottenPassEmail.value === ''||
-              forgottenPassEmail.invalid">
+      <button
+        [disabled]="forgottenSubmitted ||
+                    forgottenPassEmail.pristine ||
+                    forgottenPassEmail.value === ''||
+                    forgottenPassEmail.invalid"
+        class="forgot-submit">
         <i class="fas fa-check-circle"></i>
       </button>
       <small *ngIf="forgottenPassEmail.value === ''">

@@ -10,6 +10,7 @@ import { FormActionTextsComponent } from './authentication/form-action-texts/for
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import {MaterialModule} from './material/material.module';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import {MaterialModule} from './material/material.module';
     LoginFormComponent,
     SignupFormComponent,
     FormActionTextsComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,

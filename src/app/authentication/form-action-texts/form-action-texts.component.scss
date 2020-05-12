@@ -13,7 +13,7 @@
   overflow:hidden;
   transition: all 0.7s ease-in-out;
   flex-wrap: wrap;
-  background-image: $royal-red-gradient;
+  background: $royal-red-gradient;
 
   .floating-texts-wrapper {
     display: flex;
@@ -32,12 +32,14 @@
 
     .floating-text-login {
       margin-left: -400px;
+      transform: translateZ(0);
     }
 
     .floating-text-sign-up {
       text-align: center;
       color: white;
       margin-left: 50px;
+      transform: translateZ(0);
 
       p {
         padding: 0 20px;
