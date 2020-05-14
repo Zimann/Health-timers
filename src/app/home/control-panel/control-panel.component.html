@@ -1,0 +1,17 @@
+<section class="control-panel">
+  <div class="profile-section">
+    <div class="profile-content-wrapper">
+      <i class="fas fa-user-circle" (click)=showProfileSection(true)></i>
+      <i class="fas fa-cogs" (click)=showSettingsMenu()></i>
+    </div>
+        <app-profile-settings
+          (profileEmitter)="showProfileSection($event)"
+          [displayMenu]="showMenu"
+        ></app-profile-settings>
+  </div>
+  <!--  <app-profile-slide-->
+  <!--    [slideIn]="setSlidingState()"-->
+  <!--    (slideOutEmitter)="showProfileSection($event)">-->
+  <!--  </app-profile-slide>-->
+</section>
+<div [ngStyle]="{'opacity': (hideBottomBar | async) ? 0: 1}" class="bottom-separator"></div>
