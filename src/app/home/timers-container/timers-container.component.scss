@@ -1,0 +1,8 @@
+@import '../../shared/general-style/general-style';
+
+
+:host {
+ background-color: $base-text-color;
+  width: calc(100% - 400px);
+  height: 100vh;
+}
