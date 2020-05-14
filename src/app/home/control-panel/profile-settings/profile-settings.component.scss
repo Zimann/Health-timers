@@ -1,0 +1,44 @@
+@import '../../../shared/general-style/general-style';
+
+.settings-menu {
+  position: absolute;
+  width: 0;
+  height: 0;
+  background: white;
+  top: 70px;
+  right: 12px;
+  border-radius: 4px;
+  -webkit-box-shadow: 2px 2px 8px -3px rgba(0,0,0,0.75);
+  -moz-box-shadow: 2px 2px 8px -3px rgba(0,0,0,0.75);
+  box-shadow: 2px 2px 8px -3px rgba(0,0,0,0.75);
+  transition: all .2s ease-in-out;
+  overflow: hidden;
+  z-index: 2;
+  transform: translateZ(0);
+
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    border-radius: 4px;
+
+    li {
+      padding: 10px 0 10px 15px;
+      cursor: pointer;
+      display: block;
+      transition: all .1s ease-in-out;
+
+      &:hover {
+        background-color: $base-text-color;
+        color: white;
+      }
+    }
+  }
+}
+
+/* toggle classes */
+
+.show-settings-menu {
+  width: 100px;
+  height: 78px;
+}
