@@ -135,7 +135,7 @@ export class LoginFormComponent implements OnInit, OnDestroy, AfterViewInit {
       this.forgottenSubmitted = false;
       this.bringInForgottenPass = false;
       this.forgottenPassForm.reset();
-    }, 1500);
+    }, 1200);
 
     // send the new password to the provided email address
   }

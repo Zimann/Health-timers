@@ -59,7 +59,7 @@
         }
 
         &.forgotten-confirmation {
-          color: $confirmation-color;
+          color: $base-text-color;
         }
       }
 
@@ -71,9 +71,11 @@
         background: none;
         z-index: 3;
         cursor: pointer;
+        color: white;
 
         &:disabled {
           cursor: default;
+          color: gray;
         }
 
         i {
