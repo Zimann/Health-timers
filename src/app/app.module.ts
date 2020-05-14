@@ -11,6 +11,9 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import {MaterialModule} from './material/material.module';
 import { HomeComponent } from './home/home.component';
+import { TimersContainerComponent } from './home/timers-container/timers-container.component';
+import { ProfileSettingsComponent } from './home/control-panel/profile-settings/profile-settings.component';
+import { ControlPanelComponent } from './home/control-panel/control-panel.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +23,9 @@ import { HomeComponent } from './home/home.component';
     SignupFormComponent,
     FormActionTextsComponent,
     HomeComponent,
+    TimersContainerComponent,
+    ProfileSettingsComponent,
+    ControlPanelComponent,
   ],
   imports: [
     BrowserModule,

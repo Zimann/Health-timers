@@ -10,7 +10,7 @@ html, body {
 }
 
 ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-  color: $input-text-color;
+  color: $base-text-color;
   font-weight: bold;
   opacity: 1; /* Firefox */
 }
@@ -33,15 +33,15 @@ body {
 }
 
 input.mat-input-element {
-  color: $input-text-color;
+  color: $base-text-color;
   padding-left: 20px;
-  caret-color: $input-text-color;
+  caret-color: $base-text-color;
 }
 
 .mat-focused {
   .mat-form-field-underline {
     .mat-form-field-ripple {
-      background: $input-text-color;
+      background: $base-text-color;
       width: calc(100% - 40px);
       margin-left: 20px;
     }
@@ -67,7 +67,7 @@ input.mat-input-element {
 
 .mat-focused {
   .mat-form-field-label {
-    color: $input-text-color !important;
+    color: $base-text-color !important;
   }
 }
 
