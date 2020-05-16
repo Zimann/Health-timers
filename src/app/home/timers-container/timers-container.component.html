@@ -1,1 +1,5 @@
-<ng-content></ng-content>
+
+<app-timer-column *ngFor="let name of colNames; let i = index" [colName]="name" >
+  <div class="col-separator"></div>
+</app-timer-column>
+<div class="bottom-separator"></div>

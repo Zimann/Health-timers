@@ -1,8 +1,23 @@
 @import '../../shared/general-style/general-style';
 
-
 :host {
  background-color: $base-text-color;
   width: calc(100% - 400px);
   height: 100vh;
+  display: flex;
+
+  .col-separator {
+    height: 100%;
+    width: 4px;
+    background: $pink-default;
+  }
+
+  .bottom-separator {
+    position: absolute;
+    bottom: 0;
+    width: calc(100vw - 400px);
+    left: 400px;
+    height: 4px;
+    background: $pink-default;
+  }
 }
