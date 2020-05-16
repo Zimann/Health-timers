@@ -1,15 +1,11 @@
 @import '../../shared/general-style/general-style';
 
-.control-panel {
-  overflow: hidden;
-}
-
 section {
   height: 100%;
   width: 400px;
   background-color: #ffffff;
 
-  .profile-section {
+  .profile-area {
     align-items: center;
     height:100px;
     position: relative;
@@ -40,13 +36,18 @@ section {
       }
     }
   }
+
+  .control-content {
+    height: 100vh;
+
+    .add-timer {
+      background-color: $base-text-color;
+      color: white;
+      outline: none;
+      border: none;
+      padding: 10px;
+      border-radius: 5px;
+    }
+  }
 }
 
-.bottom-separator {
-  position: absolute;
-  bottom: 0;
-  width: calc(100vw - 400px);
-  left: 400px;
-  height: 6px;
-  background-image: $royal-red-gradient;
-}

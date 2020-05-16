@@ -2,7 +2,9 @@
 /* Base text colors, transitions and background gradients */
 $base-text-color: #362843;
 $royal-red-gradient: linear-gradient(-60deg, #ff6e6e 0%, #790909 100%);
+$royal-red-gradient-reverse: linear-gradient(-60deg, #790909 0%, #ff6e6e 100%);
 $hover-button-color: #cd2222;
+$pink-default: #ff6e6e;
 $default-transition: all .1s linear;
 
 
@@ -13,7 +15,7 @@ $default-transition: all .1s linear;
 }
 
 .slide-in-password {
-  transform: translateZ(0) translateX(0) !important;
+  transform: translateX(0) !important;
 }
 
 /* mixins */

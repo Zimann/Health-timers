@@ -24,7 +24,7 @@ export class ProfileSettingsComponent implements OnInit {
 
   }
 
-  showProfile() {
+  showSettings() {
     this.profileEmitter.emit(true);
   }
 
