@@ -1,5 +1,5 @@
 <section class="control-panel">
-  <div class="profile-section">
+  <div class="profile-area">
     <div class="profile-content-wrapper">
       <i class="fas fa-user-circle" (click)=showProfileSection(true)></i>
       <i class="fas fa-cogs" (click)=showSettingsMenu()></i>
@@ -13,5 +13,8 @@
   <!--    [slideIn]="setSlidingState()"-->
   <!--    (slideOutEmitter)="showProfileSection($event)">-->
   <!--  </app-profile-slide>-->
+  <div class="control-content">
+    <button class="add-timer">Add Timer</button>
+  </div>
 </section>
-<div [ngStyle]="{'opacity': (hideBottomBar | async) ? 0: 1}" class="bottom-separator"></div>
+
