@@ -1,0 +1,70 @@
+@import '../../../shared/general-style/general-style';
+
+$control-panel-text-size: 20px;
+
+:host {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  p {
+    width: 90%;
+    text-align: center;
+    color: $base-text-color;
+    font-size: $base-font-size;
+    border-radius: 20px;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    border-bottom: 2px solid red;
+  }
+
+  form {
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top: 10px;
+
+    label {
+      font-size: $control-panel-text-size - 5;
+    }
+    input {
+      width: 40px;
+      border: 1px solid $base-text-color;
+    }
+
+    select {
+      font-family: $general-font-family;
+      border: 1px solid $base-text-color;
+    }
+
+    .button-wrapper {
+      width: 90%;
+      border-top: 2px solid red;
+      border-radius: 20px;
+      text-align: center;
+      margin-top: 20px;
+
+      button {
+        color: white;
+        background-color: $pink-default;
+        font-size: $control-panel-text-size - 3;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        margin-top: 10px;
+        border-radius: 8px;
+        padding: 5px;
+        transition: all .2s linear;
+
+        &:hover {
+          background-color: $base-text-color;
+        }
+      }
+    }
+  }
+}
+
+
+

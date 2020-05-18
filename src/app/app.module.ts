@@ -15,6 +15,7 @@ import { TimersContainerComponent } from './home/timers-container/timers-contain
 import { ProfileSettingsComponent } from './home/control-panel/profile-settings/profile-settings.component';
 import { ControlPanelComponent } from './home/control-panel/control-panel.component';
 import { TimerColumnComponent } from './home/timers-container/timer-column/timer-column.component';
+import { CreateTimerComponent } from './home/control-panel/create-timer/create-timer.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { TimerColumnComponent } from './home/timers-container/timer-column/timer
     ProfileSettingsComponent,
     ControlPanelComponent,
     TimerColumnComponent,
+    CreateTimerComponent,
   ],
   imports: [
     BrowserModule,
