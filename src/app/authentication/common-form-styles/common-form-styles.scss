@@ -1,7 +1,5 @@
 @import '../../shared/general-style/general-style';
 
-$login-input-background: linear-gradient(-60deg, #790909 0%, #ff6e6e 100%);
-$signup-input-background: linear-gradient(-60deg, #ff6e6e 0%, #790909 100%);
 
 h2 {
   color: $base-text-color;
@@ -15,8 +13,7 @@ form {
   position: relative;
 
   input {
-    border: none;
-    background: $login-input-background;
+    border: 1px solid green;
     border-radius: 4px;
     outline: none;
     color: $base-text-color;
@@ -25,10 +22,12 @@ form {
     letter-spacing: 0.08rem;
     font-family: inherit;
     padding: 12px 10px 12px 10px;
+    transition: all .2s linear;
 
     &:not(:first-of-type) {
       margin-top: 20px;
     }
+
   }
 
   small {
@@ -38,6 +37,14 @@ form {
     position: absolute;
     font-weight: bold;
     color: #ff5858;
+
+    &:nth-of-type(1) {
+      margin-top: 39px;
+    }
+
+    &:nth-of-type(2) {
+      margin-top: 101px;
+    }
   }
 
   button {
@@ -47,7 +54,7 @@ form {
       border-radius: 15px;
       border: 1px solid transparent;
       margin-top: 20px;
-      font-family: 'Roboto', sans-serif;
+      font-family: $general-font-family;
       color: white;
       font-weight: 500;
       padding: 8px 35px;
@@ -56,8 +63,10 @@ form {
     }
 
     &:disabled {
-      background-color: grey;
+      background-color: white;
       cursor: not-allowed;
+      color: $base-text-color;
+      border: 1px solid $base-text-color;
     }
 
     &:hover {
@@ -67,8 +76,8 @@ form {
         &:not(.forgot-submit) {
           cursor: pointer;
           color: white;
-          border-color: #790909;
-          background-color: #790909;
+          border-color: #41c7af;
+          background-color: #41c7af;
         }
       }
     }
@@ -100,7 +109,7 @@ form {
   height: 30px;
   border-radius: 50%;
   background: #ffffff;
-  background: linear-gradient(to right, $base-text-color 10%, rgba(255, 255, 255, 0) 42%);
+  background: linear-gradient(to right, #54e38e 10%, rgba(255, 255, 255, 0) 42%);
   -webkit-animation: load3 1.4s infinite linear;
   animation: load3 1.4s infinite linear;
   transform: translateZ(0);
@@ -153,6 +162,7 @@ form {
 
 .notification-messages {
   position: absolute;
+  pointer-events: none;
   width: 40%;
 
   p {

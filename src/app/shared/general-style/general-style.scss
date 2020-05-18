@@ -2,10 +2,15 @@
 /* Base text colors, transitions and background gradients */
 $base-text-color: #362843;
 $royal-red-gradient: linear-gradient(-60deg, #ff6e6e 0%, #790909 100%);
-$royal-red-gradient-reverse: linear-gradient(-60deg, #790909 0%, #ff6e6e 100%);
+$error-color: #ff6e6e;
+$base-green-color: #41c7af;
+$flat-green-gradient: linear-gradient(-60deg, #41c7af 0%, #54e38e 100%);
+$flat-green-gradient-reverse: linear-gradient(-60deg, #54e38e 0%, #41c7af 100%);
 $hover-button-color: #cd2222;
 $pink-default: #ff6e6e;
 $default-transition: all .1s linear;
+$base-font-size: 20px;
+$general-font-family: Roboto, "Helvetica Neue", sans-serif;
 
 
 /* Form Validation classes */
