@@ -15,6 +15,8 @@ export class SignupFormComponent implements OnInit, OnDestroy {
   public isUserSignedUp = this.authService.signedUpSubj;
   public signUpSub: Subscription;
   public loaderSub = this.authService.signUpLoaderSubj;
+
+  // this will have 'true' value when the form switches
   @Input() formMoveInitiated: boolean;
   public signUpForm: FormGroup;
   public signUpChecker = {

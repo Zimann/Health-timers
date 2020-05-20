@@ -5,7 +5,7 @@
       <label for="email_sign_up"></label>
       <input required id="email_sign_up" formControlName="email" placeholder="Email" type="email">
       <small [class.hide-input-validation]="(signUpEmail.valid || signUpEmail.untouched) && signUpChecker.email">
-        Email is not valid
+        Email format not valid/Use only lowercase
       </small>
       <label for="password_sign_up"></label>
       <input required id="password_sign_up" formControlName="password" placeholder="Password" type="password">
@@ -22,5 +22,7 @@
 </div>
 <div class="notification-messages signup-messages">
   <p *ngIf="(isUserSignedUp | async) === true">Thank you for joining us!<br> All you have to do now is log in on the left side.</p>
-  <p class="submission-error" *ngIf="(isUserSignedUp | async) !== true">{{ isUserSignedUp | async }}</p>
+
+  <!--  hide the error message on form swap and show it based on signup state-->
+  <p class="submission-error" *ngIf="formMoveInitiated">{{ (isUserSignedUp | async) !== true ? (isUserSignedUp | async) : null }}</p>
 </div>
