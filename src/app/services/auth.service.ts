@@ -31,7 +31,6 @@ export class AuthService {
               private router: Router) {}
 
   signUpUser(email: string, password: string) {
-
     this.signUpLoaderSubj.next(false);
     this.http.post<SignUpResponse>(this.signUpEndpoint, {
       email,

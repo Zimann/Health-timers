@@ -31,9 +31,7 @@ export class FormActionTextsComponent implements OnInit {
     }
 
     this.slideElements = !this.slideElements;
-
     this.moveForms.emit(this.slideElements);
-    this.crossComponentService.resetLoginForm$.next(true);
   }
 
 }
