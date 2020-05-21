@@ -1,9 +1,9 @@
 import {AfterViewInit, Component, ElementRef, Input, OnDestroy, OnInit, ViewChild} from '@angular/core';
-import {ReplaySubject, Subscription} from "rxjs";
-import {Form, FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {AuthService} from "../../services/auth.service";
-import {CrossComponentService} from "../../services/cross-component.service";
-import {takeUntil} from "rxjs/operators";
+import {ReplaySubject, Subscription} from 'rxjs';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {AuthService} from '../../services/auth.service';
+import {CrossComponentService} from '../../services/cross-component.service';
+import {takeUntil} from 'rxjs/operators';
 
 @Component({
   selector: 'app-login-form',
@@ -12,8 +12,10 @@ import {takeUntil} from "rxjs/operators";
 })
 export class LoginFormComponent implements OnInit, OnDestroy, AfterViewInit {
 
+  // this will have 'false' value when the form switches
   @Input() formMoveInitiated: boolean;
-  @ViewChild('forgottenPassRef', {static: false}) forgottenPassRef: ElementRef;
+  @ViewChild('forgottenPassRef') forgottenPassRef: ElementRef;
+  @ViewChild('loginEmailRef') loginEmailRef: ElementRef;
 
   private destroyed$ = new ReplaySubject(1);
 
@@ -23,13 +25,7 @@ export class LoginFormComponent implements OnInit, OnDestroy, AfterViewInit {
   public loaderSub = this.authService.logInLoaderSubj;
   public loginForm: FormGroup;
   public forgottenPassForm: FormGroup;
-
   public signInSub: Subscription;
-
-  public loginChecker = {
-    email: true,
-    password: true
-  };
 
   constructor(private formBuild: FormBuilder,
               private authService: AuthService,
@@ -64,23 +60,15 @@ export class LoginFormComponent implements OnInit, OnDestroy, AfterViewInit {
         Validators.minLength(9)
       ]]
     });
-
     // this is where we get data from the login form
     this.loginForm.valueChanges
       .pipe(
         takeUntil(this.destroyed$)
       )
-      .subscribe(value => {
+      .subscribe(() => {
         if (this.bringInForgottenPass) {
           this.bringInForgottenPass = false;
           this.forgottenPassForm.reset();
-        }
-        // handles hiding error messages when typing is detected
-        if (value.email !== '') {
-          this.loginChecker.email = true;
-        }
-        if (value.password !== '') {
-          this.loginChecker.password = true;
         }
       });
   }
@@ -98,37 +86,19 @@ export class LoginFormComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   onSubmitLogin() {
-
-    // check the password and email fields
-    if ((this.loginForm.value.email === '' && this.loginForm.value.password === '') ||
-      this.loginForm.controls.email.status === 'INVALID' &&
-      this.loginForm.controls.password.status === 'INVALID'
-    ) {
-      this.loginChecker.email = false;
-      this.loginChecker.password = false;
-      return;
-    }
-    if (this.loginForm.value.email === '' || this.loginForm.controls.email.status === 'INVALID') {
-      this.loginChecker.email = false;
-      return;
-    }
-
-    if (this.loginForm.value.password === '' || this.loginForm.controls.password.status === 'INVALID') {
-      this.loginChecker.password = false;
-      return;
-    }
-
     this.authService.logInUser(this.loginEmail.value, this.loginPassword.value);
     this.loginForm.reset();
   }
 
   bringInForgottenPassword() {
+    this.forgottenPassForm.reset();
     this.bringInForgottenPass = !this.bringInForgottenPass;
     this.forgottenPassRef.nativeElement.focus();
   }
 
   onSubmitForgottenPass() {
 
+    this.loginEmailRef.nativeElement.focus();
     // show confirmation message
     this.forgottenSubmitted = true;
     setTimeout(() => {

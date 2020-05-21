@@ -61,7 +61,12 @@
         background: none;
         z-index: 3;
         cursor: pointer;
-        color: white;
+        color: $base-green-color;
+
+        &:disabled {
+          cursor: not-allowed;
+          color: lightgrey;
+        }
 
         i {
           font-size: 18px;

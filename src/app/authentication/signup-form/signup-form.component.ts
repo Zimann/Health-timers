@@ -1,8 +1,8 @@
 import {Component, Input, OnDestroy, OnInit} from '@angular/core';
-import {Form, FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {AuthService} from "../../services/auth.service";
-import {CrossComponentService} from "../../services/cross-component.service";
-import {ReplaySubject, Subscription} from "rxjs";
+import {Form, FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {AuthService} from '../../services/auth.service';
+import {CrossComponentService} from '../../services/cross-component.service';
+import {ReplaySubject, Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-signup-form',
@@ -11,18 +11,14 @@ import {ReplaySubject, Subscription} from "rxjs";
 })
 export class SignupFormComponent implements OnInit, OnDestroy {
 
+  // this will have 'true' value when the form switches
+  @Input() formMoveInitiated: boolean;
+
   private destroyed$ = new ReplaySubject(1);
   public isUserSignedUp = this.authService.signedUpSubj;
   public signUpSub: Subscription;
   public loaderSub = this.authService.signUpLoaderSubj;
-
-  // this will have 'true' value when the form switches
-  @Input() formMoveInitiated: boolean;
   public signUpForm: FormGroup;
-  public signUpChecker = {
-    email: true,
-    password: true,
-  };
 
   constructor(private formBuild: FormBuilder,
               private authService: AuthService,
@@ -57,26 +53,6 @@ export class SignupFormComponent implements OnInit, OnDestroy {
   }
 
   onSubmitSignUp() {
-    // check the password, email and name fields
-    if ((this.signUpForm.value.email === '' && this.signUpForm.value.password === '' && this.signUpForm.value.name === '') ||
-      this.signUpForm.controls.email.status === 'INVALID' &&
-      this.signUpForm.controls.password.status === 'INVALID' &&
-      this.signUpForm.controls.name.status === 'INVALID'
-    ) {
-      this.signUpChecker.email = false;
-      this.signUpChecker.password = false;
-      return;
-    }
-    if (this.signUpForm.value.email === '' || this.signUpForm.controls.email.status === 'INVALID') {
-      this.signUpChecker.email = false;
-      return;
-    }
-
-    if (this.signUpForm.value.password === '' || this.signUpForm.controls.password.status === 'INVALID') {
-      this.signUpChecker.password = false;
-      return;
-    }
-
     this.authService.signUpUser(this.signUpEmail.value, this.signUpPassword.value);
     this.signUpForm.reset();
   }
@@ -86,6 +62,4 @@ export class SignupFormComponent implements OnInit, OnDestroy {
     this.destroyed$.complete();
     this.signUpSub.unsubscribe();
   }
-
-
 }
