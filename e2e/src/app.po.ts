@@ -6,6 +6,11 @@ export class AppPage {
   }
 
   getTitleText(): Promise<string> {
-    return element(by.css('app-root .content span')).getText() as Promise<string>;
+    return element(by.css('app-root')).getText() as Promise<string>;
+  }
+
+  getLoginText(): Promise<string> {
+    return element(by.css('#email')).getText() as Promise<string>;
   }
 }
+

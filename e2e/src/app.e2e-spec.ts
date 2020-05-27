@@ -1,5 +1,5 @@
 import { AppPage } from './app.po';
-import { browser, logging } from 'protractor';
+import {browser, by, element, logging} from 'protractor';
 
 describe('workspace-project App', () => {
   let page: AppPage;
@@ -8,9 +8,20 @@ describe('workspace-project App', () => {
     page = new AppPage();
   });
 
-  it('should display welcome message', () => {
+  it('should first have the Login form fields displayed', () => {
     page.navigateTo();
-    expect(page.getTitleText()).toEqual('health-timers app is running!');
+    const emailInput = element(by.css('#email'));
+    emailInput.click();
+    expect(element.all(by.css('#email:focus')).count()).toBe(1);
+  });
+
+  fit('should move the text layer when pressing its button', () => {
+    page.navigateTo();
+    const floatingWrapper = element(by.css('.floating-layout-wrapper'));
+    expect(floatingWrapper.getCssValue('marginLeft')).toBe('0px');
+    // const signUpButton = element(by.css('.floating-text-sign-up button'));
+
+    // const
   });
 
   afterEach(async () => {
