@@ -15,7 +15,7 @@ $control-panel-text-size: 20px;
     border-radius: 20px;
     padding-bottom: 10px;
     margin-bottom: 10px;
-    border-bottom: 2px solid red;
+    border-bottom: 2px solid $base-green-color;
   }
 
   form {
@@ -41,14 +41,14 @@ $control-panel-text-size: 20px;
 
     .button-wrapper {
       width: 90%;
-      border-top: 2px solid red;
+      border-top: 2px solid $base-green-color;
       border-radius: 20px;
       text-align: center;
       margin-top: 20px;
 
       button {
         color: white;
-        background-color: $pink-default;
+        background-color: $base-green-color;
         font-size: $control-panel-text-size - 3;
         border: none;
         outline: none;

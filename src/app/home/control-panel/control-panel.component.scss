@@ -10,7 +10,7 @@ section {
     height:100px;
     position: relative;
     width: 100%;
-    background-image: $royal-red-gradient;
+    background-image: $flat-green-gradient;
 
     .profile-content-wrapper {
       width: 360px;
@@ -41,7 +41,6 @@ section {
     height: 100vh;
 
     .add-timer {
-      background-color: $base-text-color;
       color: white;
       outline: none;
       border: none;
