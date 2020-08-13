@@ -40,7 +40,6 @@ export class CreateTimerComponent implements OnInit {
   }
 
   composeTimerValues() {
-
     this.createTimerService.collectCreatingData({
       hours: this.hoursValue,
       minutes: this.minutesValue,

@@ -1,12 +1,11 @@
 <p>Create a timer</p>
-
 <form [formGroup]=timerForm (ngSubmit)="composeTimerValues()" ngNativeValidate>
   <label for="hours">Hrs
-    <input id="hours" formControlName="hours" name="hours" type="number" pattern=".{3}" required>
+    <input id="hours" formControlName="hours" max="12" name="hours" type="number" pattern=".{2}" required>
   </label>
 
   <label for="minutes">Mins
-    <input name="minutes" formControlName="minutes" id="minutes" required type="number" pattern=".{2}">
+    <input name="minutes" formControlName="minutes" id="minutes" max="59" required type="number" pattern=".{2}">
   </label>
 
   <label for="timer_type"> Type
