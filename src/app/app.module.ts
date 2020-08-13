@@ -7,15 +7,16 @@ import { AuthenticationComponent } from './authentication/authentication.compone
 import { LoginFormComponent } from './authentication/login-form/login-form.component';
 import { SignupFormComponent } from './authentication/signup-form/signup-form.component';
 import { FormActionTextsComponent } from './authentication/form-action-texts/form-action-texts.component';
-import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {HttpClientModule} from "@angular/common/http";
-import {MaterialModule} from './material/material.module';
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { HttpClientModule } from "@angular/common/http";
+import { MaterialModule } from './material/material.module';
 import { HomeComponent } from './home/home.component';
 import { TimersContainerComponent } from './home/timers-container/timers-container.component';
 import { ProfileSettingsComponent } from './home/control-panel/profile-settings/profile-settings.component';
 import { ControlPanelComponent } from './home/control-panel/control-panel.component';
 import { TimerColumnComponent } from './home/timers-container/timer-column/timer-column.component';
 import { CreateTimerComponent } from './home/control-panel/create-timer/create-timer.component';
+import { CountdownModule } from 'ngx-countdown';
 
 @NgModule({
   declarations: [
@@ -37,9 +38,10 @@ import { CreateTimerComponent } from './home/control-panel/create-timer/create-t
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
-    MaterialModule
+    MaterialModule,
+    CountdownModule
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
