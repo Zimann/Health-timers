@@ -1,9 +1,9 @@
-import {AfterViewInit, Component, ElementRef, Input, OnDestroy, OnInit, ViewChild} from '@angular/core';
-import {ReplaySubject, Subscription} from 'rxjs';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {AuthService} from '../../services/auth.service';
-import {CrossComponentService} from '../../services/cross-component.service';
-import {takeUntil} from 'rxjs/operators';
+import { AfterViewInit, Component, ElementRef, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { ReplaySubject, Subscription } from 'rxjs';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from '../../services/auth.service';
+import { CrossComponentService } from '../../services/cross-component.service';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-login-form',
@@ -17,19 +17,20 @@ export class LoginFormComponent implements OnInit, OnDestroy, AfterViewInit {
   @ViewChild('forgottenPassRef') forgottenPassRef: ElementRef;
   @ViewChild('loginEmailRef') loginEmailRef: ElementRef;
 
-  private destroyed$ = new ReplaySubject(1);
-
-  public bringInForgottenPass = false;
   public forgottenSubmitted = false;
   public isUserSignedIn = this.authService.loggedInSubj;
   public loaderSub = this.authService.logInLoaderSubj;
   public loginForm: FormGroup;
   public forgottenPassForm: FormGroup;
   public signInSub: Subscription;
+  public bringInForgottenPass = false;
+
+  private destroyed$ = new ReplaySubject(1);
 
   constructor(private formBuild: FormBuilder,
               private authService: AuthService,
-              private crossComponentService: CrossComponentService) { }
+              private crossComponentService: CrossComponentService) {
+  }
 
   ngOnInit(): void {
 

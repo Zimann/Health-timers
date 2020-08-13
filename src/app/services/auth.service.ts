@@ -1,38 +1,33 @@
-import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
-import {Subject} from 'rxjs';
-import {Router} from '@angular/router';
-import { apiKeys } from './apiKeys';
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Subject } from 'rxjs';
+import { Router } from '@angular/router';
+import { APIDetails } from './apiKeys.model';
 import Routes from '../shared/routes/routes';
-
-interface SignUpResponse {
-  idToken: string;
-  email: string;
-  refreshToken: string;
-  expiresIn: string;
-  localId: string;
-}
+import { SignUpResponse, ResponsesMessages } from '../shared/models/responses.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  firebaseAPIKey = apiKeys;
-  signUpEndpoint = `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${this.firebaseAPIKey}`;
-  logInEndpoint = `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${this.firebaseAPIKey}`;
-  failedSignUpMessage = `There was a problem with the sign up or the email address is already registered!`;
-  failedLogInMessage = 'The email/password is incorrect';
 
   signedUpSubj = new Subject();
   loggedInSubj = new Subject();
   signUpLoaderSubj = new Subject();
   logInLoaderSubj = new Subject();
+
+  private static failedSignUpMessage = ResponsesMessages.FAILED_SIGNUP_MESSAGE;
+  private static failedLogInMessage = ResponsesMessages.FAILED_LOGIN_MESSAGE;
+  private static signUpEndpoint = `${APIDetails.signUpEndpoint}${APIDetails.firebaseAPIKey}`;
+  private static logInEndpoint = `${APIDetails.logInEndpoint}${APIDetails.firebaseAPIKey}`;
+
   constructor(private http: HttpClient,
-              private router: Router) {}
+              private router: Router) {
+  }
 
   signUpUser(email: string, password: string) {
     this.signUpLoaderSubj.next(false);
-    this.http.post<SignUpResponse>(this.signUpEndpoint, {
+    this.http.post<SignUpResponse>(AuthService.signUpEndpoint, {
       email,
       password,
       returnSecureToken: true
@@ -42,14 +37,14 @@ export class AuthService {
         this.signUpLoaderSubj.next(true);
       },
       () => {
-        this.signedUpSubj.next(this.failedSignUpMessage);
+        this.signedUpSubj.next(AuthService.failedSignUpMessage);
         this.signUpLoaderSubj.next(true);
       });
   }
 
   logInUser(email: string, password: string) {
     this.logInLoaderSubj.next(false);
-    this.http.post<SignUpResponse>(this.logInEndpoint, {
+    this.http.post<SignUpResponse>(AuthService.logInEndpoint, {
       email,
       password,
       returnSecureToken: true
@@ -64,8 +59,9 @@ export class AuthService {
         this.router.navigate([Routes.HOME]);
       },
       () => {
-        this.loggedInSubj.next(this.failedLogInMessage);
+        this.loggedInSubj.next(AuthService.failedLogInMessage);
         this.logInLoaderSubj.next(true);
       });
   }
+
 }

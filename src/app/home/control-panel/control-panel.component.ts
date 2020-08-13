@@ -24,6 +24,7 @@ export class ControlPanelComponent implements OnInit {
               private crossComponentService: CrossComponentService) { }
 
   ngOnInit() {
+    //TODO Outsource the logic into a service
     let departureMomentDate;
 
     // add local storage timeStamp when navigating away

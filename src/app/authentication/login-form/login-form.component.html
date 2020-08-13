@@ -4,7 +4,7 @@
     <h2>Log in</h2>
     <form [formGroup]=loginForm (ngSubmit)="onSubmitLogin()">
       <label for="email"></label>
-      <input required id="email" formControlName="email"  #loginEmailRef placeholder="Email" type="email">
+      <input required id="email" formControlName="email" #loginEmailRef placeholder="Email" type="email">
       <small [class.hide-input-validation]="
         loginEmail.value === '' ||
         loginEmail.valid ||
@@ -22,7 +22,8 @@
       <button [disabled]="
       (isUserSignedIn | async) === true ||
       loginEmail.invalid ||
-      loginPassword.invalid" type="submit">Log in
+      loginPassword.invalid" type="submit">
+        Log in
       </button>
       <span *ngIf="(loaderSub | async) === false" class="loader"></span>
     </form>
