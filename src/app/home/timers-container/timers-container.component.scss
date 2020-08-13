@@ -1,16 +1,9 @@
 @import '../../shared/general-style/general-style';
 
 :host {
- //background-color: $base-text-color;
   width: calc(100% - 400px);
   height: 100vh;
   display: flex;
-
-  .col-separator {
-    height: 100%;
-    width: 4px;
-    background: $base-green-color;
-  }
 
   .bottom-separator {
     position: absolute;
