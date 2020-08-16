@@ -44,6 +44,8 @@ export class CreateTimerComponent implements OnInit {
       hours: this.hoursValue,
       minutes: this.minutesValue,
       timerType: this.timerType
-    })
+    });
+    this.timerForm.reset();
   }
+
 }
