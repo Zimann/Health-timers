@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Countdown, CountDownTimer, HourConversionUnits, TimerTitle } from "../../shared/models/timer.model";
 import { CrossComponentService } from '../../services/cross-component.service';
+import {CountdownService} from "../../services/countdown.service";
 
 @Component({
   selector: 'app-timers-container',
@@ -11,9 +12,9 @@ import { CrossComponentService } from '../../services/cross-component.service';
 export class TimersContainerComponent implements OnInit {
 
   colNames: TimerTitle[] = [
-    {timerName: 'Stretching timers', timerIcon: 'fa-running'},
-    {timerName: 'Fast workout timers', timerIcon: 'fa-dumbbell'},
-    {timerName: 'Chilling timers', timerIcon: 'fa-couch'}
+    {timerName: 'Stretching', timerIcon: 'fa-running'},
+    {timerName: 'Fast workout', timerIcon: 'fa-dumbbell'},
+    {timerName: 'Chilling', timerIcon: 'fa-couch'}
   ];
 
   // TODO refactor this to fetch the timers from firebase
@@ -22,22 +23,15 @@ export class TimersContainerComponent implements OnInit {
   countdownTimers: CountDownTimer[] = [];
   timerName: string;
 
-  constructor(private crossComponentService: CrossComponentService) {
+  constructor(private crossComponentService: CrossComponentService,
+              private countDownService: CountdownService) {
   }
 
   ngOnInit(): void {
     this.crossComponentService.timerData$.subscribe(data => {
-      // TODO Move this to a separate service (countdown service??)
       this.timerName = data.timerType;
-      this.countdownTimers.push({...data, ...TimersContainerComponent.calculateCountDownTime(data)});
+      this.countdownTimers.push({...data, ...this.countDownService.calculateCountDownTime(data)});
     });
-  }
-
-  private static calculateCountDownTime(data): Countdown {
-    return {
-      leftTime: data.hours * HourConversionUnits.HOUR_TO_SECONDS + data.minutes * HourConversionUnits.MINUTE_TO_SECONDS,
-      format: 'h:m:s'
-    }
   }
 
 }
