@@ -1,3 +1,16 @@
+@import '../shared/general-style/general-style';
+
 :host {
   display: flex;
+}
+
+.third-party-text {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  font-size: 12px;
+
+  a {
+    color: $base-green-color;
+  }
 }

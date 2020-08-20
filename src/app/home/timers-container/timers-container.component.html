@@ -1,13 +1,15 @@
 <app-timer-column *ngFor="let name of colNames" [colName]="name">
-  <div class="timer-body">
-    <ng-container
-      *ngFor="let countdownTimer of countdownTimers">
-      <countdown
-        *ngIf="countdownTimer.timerType === name.timerName"
-        [config]="{leftTime: countdownTimer.leftTime, format:countdownTimer.format}">
-      </countdown>
-      <br *ngIf="countdownTimer.timerType === name.timerName">
-    </ng-container>
+  <div class="timer-wrapper">
+    <div class="timer-body">
+      <ng-container
+        *ngFor="let countdownTimer of countdownTimers">
+        <countdown
+          *ngIf="countdownTimer.timerType === name.timerName"
+          [config]="{leftTime: countdownTimer.leftTime, format:countdownTimer.format}">
+        </countdown>
+        <br *ngIf="countdownTimer.timerType === name.timerName">
+      </ng-container>
+    </div>
   </div>
 </app-timer-column>
 <div class="bottom-separator"></div>

@@ -45,6 +45,7 @@ export class CreateTimerComponent implements OnInit {
       minutes: this.minutesValue,
       timerType: this.timerType
     });
+    //TODO comment this out if testing is needed with multiple timers
     this.timerForm.reset();
   }
 

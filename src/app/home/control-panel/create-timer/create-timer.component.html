@@ -1,19 +1,19 @@
 <p>Create a timer</p>
 <form [formGroup]=timerForm (ngSubmit)="composeTimerValues()" ngNativeValidate>
   <label for="hours">Hrs
-    <input id="hours" formControlName="hours" max="12" name="hours" type="number" pattern=".{2}" required>
+    <input id="hours" formControlName="hours" min="0" max="12" name="hours" type="number" pattern=".{2}">
   </label>
 
   <label for="minutes">Mins
-    <input name="minutes" formControlName="minutes" id="minutes" max="59" required type="number" pattern=".{2}">
+    <input name="minutes" formControlName="minutes" id="minutes" min="1" max="59" required type="number" pattern=".{2}">
   </label>
 
   <label for="timer_type"> Type
     <select required name="timer-type" formControlName="timerType" id="timer_type">
       <option value=""></option>
-      <option value="Stretching timers">Stretching timers</option>
-      <option value="Fast workout timers">Fast workout timers</option>
-      <option value="Chilling timers">Chilling timers</option>
+      <option value="Stretching">Stretching</option>
+      <option value="Fast workout">Fast workout</option>
+      <option value="Chilling">Chilling</option>
     </select>
   </label>
   <div class="button-wrapper">

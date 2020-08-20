@@ -24,7 +24,7 @@
       justify-content: space-around;
       align-items: center;
       color: $base-text-color;
-      max-width: 190px;
+      max-width: 160px;
       text-align: center;
       margin: 35px auto 0;
       padding: 20px;
@@ -37,6 +37,11 @@
 
       p {
         margin: 0;
+      }
+
+      .fa-question-circle {
+        color: white;
+        cursor: pointer;
       }
     }
   }

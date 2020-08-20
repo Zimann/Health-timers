@@ -21,7 +21,6 @@ export class ProfileSettingsComponent implements OnInit {
   logOut() {
     localStorage.clear();
     this.router.navigate([Routes.AUTHENTICATION]);
-
   }
 
   showSettings() {

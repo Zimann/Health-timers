@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {TimerTitle} from "../../../shared/models/timer.model";
 
 @Component({
   selector: 'app-timer-column',
@@ -7,7 +8,7 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class TimerColumnComponent implements OnInit {
 
-  @Input()colName;
+  @Input()colName: TimerTitle;
   constructor() { }
 
   ngOnInit(): void {
