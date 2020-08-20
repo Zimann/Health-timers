@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {fromEvent, ReplaySubject, Subscription, timer} from "rxjs";
 import {Router} from "@angular/router";
 import {CrossComponentService} from "../../services/cross-component.service";
-import {take, takeUntil} from "rxjs/operators";
-import Routes from "../../shared/routes/routes";
+import {take} from "rxjs/operators";
+import {LocalStorageService} from "../../services/local-storage.service";
 
 @Component({
   selector: 'app-control-panel',
@@ -18,34 +18,14 @@ export class ControlPanelComponent implements OnInit {
 
   outSideClickSubj: Subscription;
   listenForOutsideClicks$ = fromEvent(document, 'click');
-  private destroyed$ = new ReplaySubject(1);
+  private destroyed$ = new ReplaySubject<boolean>(1);
 
   constructor(private router: Router,
-              private crossComponentService: CrossComponentService) { }
+              private crossComponentService: CrossComponentService,
+              private localStorageService: LocalStorageService) { }
 
   ngOnInit() {
-    //TODO Outsource the logic into a service
-    let departureMomentDate;
-
-    // add local storage timeStamp when navigating away
-    window.addEventListener('beforeunload', (e) => {
-      departureMomentDate = Math.round(new Date().getTime() / 1000);
-      localStorage.setItem('departureMomentDate', String(departureMomentDate));
-    });
-    // route user back to the authentication page once the token expires
-    const tokenExpiryTime = Number(localStorage.getItem('tokenExpiry')) * 1000;
-    const tokenExpiry$ = timer(tokenExpiryTime);
-    tokenExpiry$
-      .pipe(takeUntil(this.destroyed$))
-      .subscribe(() => {
-        localStorage.clear();
-        this.router.navigate([Routes.AUTHENTICATION]);
-      });
-  }
-
-  logOut() {
-    localStorage.clear();
-    this.router.navigate([Routes.AUTHENTICATION]);
+    this.localStorageService.trackDepartureTime(this.destroyed$);
   }
 
   showProfileSection(data: boolean) {
