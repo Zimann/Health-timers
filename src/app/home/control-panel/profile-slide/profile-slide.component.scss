@@ -1,0 +1,35 @@
+
+@import '../../../shared/general-style/general-style.scss';
+
+section {
+  transform: translateX(-400px);
+  margin-top: 50px;
+  text-align: center;
+  transition: 0.5s ease-in-out;
+  will-change: translate;
+
+  .options-wrapper {
+    width: 300px;
+    text-align: left;
+    margin: 0 auto;
+
+    input {
+      margin-left: 10px;
+    }
+
+    button {
+      font-size: 16px;
+      margin-top: 20px;
+      border: none;
+      border-radius: 20px;
+      padding: 10px;
+      color: white;
+      background: $base-green-color;
+      cursor: pointer;
+    }
+  }
+}
+
+.bring-in-options {
+  transform: translateX(0);
+}
