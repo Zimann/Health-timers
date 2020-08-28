@@ -17,6 +17,7 @@ import { ControlPanelComponent } from './home/control-panel/control-panel.compon
 import { TimerColumnComponent } from './home/timers-container/timer-column/timer-column.component';
 import { CreateTimerComponent } from './home/control-panel/create-timer/create-timer.component';
 import { CountdownModule } from 'ngx-countdown';
+import { ProfileSlideComponent } from './home/control-panel/profile-slide/profile-slide.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { CountdownModule } from 'ngx-countdown';
     ControlPanelComponent,
     TimerColumnComponent,
     CreateTimerComponent,
+    ProfileSlideComponent,
   ],
   imports: [
     BrowserModule,

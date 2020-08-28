@@ -12,8 +12,10 @@ export class ProfileSettingsComponent implements OnInit {
 
   @Output() profileEmitter = new EventEmitter<boolean>();
   @Input() displayMenu: boolean;
+  settingsToggler: boolean = true;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router) {
+  }
 
   ngOnInit(): void {
   }
@@ -24,7 +26,8 @@ export class ProfileSettingsComponent implements OnInit {
   }
 
   showSettings() {
-    this.profileEmitter.emit(true);
+      this.profileEmitter.emit(this.settingsToggler);
+      this.settingsToggler = !this.settingsToggler;
   }
 
 }

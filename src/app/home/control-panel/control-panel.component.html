@@ -1,7 +1,6 @@
 <section class="control-panel">
   <div class="profile-area">
     <div class="profile-content-wrapper">
-      <i class="fas fa-user-circle" (click)=showProfileSection(true)></i>
       <i class="fas fa-cogs" (click)=showSettingsMenu()></i>
     </div>
         <app-profile-settings
@@ -9,12 +8,12 @@
           [displayMenu]="showMenu"
         ></app-profile-settings>
   </div>
-  <!--  <app-profile-slide-->
-  <!--    [slideIn]="setSlidingState()"-->
-  <!--    (slideOutEmitter)="showProfileSection($event)">-->
-  <!--  </app-profile-slide>-->
   <div class="control-content">
     <app-create-timer></app-create-timer>
+    <app-profile-slide
+      [slideIn]="setSlidingState()"
+      (slideOutEmitter)="showProfileSection($event)">
+    </app-profile-slide>
   </div>
 </section>
 

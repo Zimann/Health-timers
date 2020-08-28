@@ -32,7 +32,7 @@ export class ControlPanelComponent implements OnInit {
     this.bringInSlide = data;
   }
 
-  setSlidingState() {
+  setSlidingState(): boolean {
     return this.bringInSlide;
   }
 
