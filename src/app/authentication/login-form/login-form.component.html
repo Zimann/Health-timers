@@ -4,7 +4,7 @@
     <h2>Log in</h2>
     <form [formGroup]=loginForm (ngSubmit)="onSubmitLogin()">
       <label for="email"></label>
-      <input required id="email" formControlName="email" #loginEmailRef placeholder="Email" type="email">
+      <input autocomplete="username" required id="email" formControlName="email" #loginEmailRef placeholder="Email" type="email">
       <small [class.hide-input-validation]="
         loginEmail.value === '' ||
         loginEmail.valid ||
@@ -12,7 +12,7 @@
         Email format not valid/Use only lowercase
       </small>
       <label for="password"></label>
-      <input required id="password" formControlName="password" placeholder="Password" type="password">
+      <input autocomplete="current-password" required id="password" formControlName="password" placeholder="Password" type="password">
       <small [class.hide-input-validation]="
         loginPassword.value === '' ||
         loginPassword.valid ||
