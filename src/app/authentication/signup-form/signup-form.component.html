@@ -3,7 +3,7 @@
     <h2>Sign up</h2>
     <form [formGroup] = signUpForm (ngSubmit)="onSubmitSignUp()">
       <label for="email_sign_up"></label>
-      <input required id="email_sign_up" formControlName="email" placeholder="Email" type="email">
+      <input autocomplete="username" required id="email_sign_up" formControlName="email" placeholder="Email" type="email">
       <small [class.hide-input-validation]="
         signUpEmail.value === '' ||
         signUpEmail.valid ||
@@ -11,7 +11,7 @@
         Email format not valid/Use only lowercase
       </small>
       <label for="password_sign_up"></label>
-      <input required id="password_sign_up" formControlName="password" placeholder="Password" type="password">
+      <input autocomplete="current-password" required id="password_sign_up" formControlName="password" placeholder="Password" type="password">
       <small [class.hide-input-validation]="
         signUpPassword.value === '' ||
         signUpPassword.valid ||
