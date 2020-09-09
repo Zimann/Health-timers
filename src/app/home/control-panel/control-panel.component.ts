@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {fromEvent, ReplaySubject, Subscription, timer} from "rxjs";
+import {fromEvent, ReplaySubject, Subscription} from "rxjs";
 import {Router} from "@angular/router";
 import {CrossComponentService} from "../../services/cross-component.service";
 import {take} from "rxjs/operators";
