@@ -1,4 +1,5 @@
 @import 'app/shared/general-style/general-style.scss';
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
 
 /* You can add global styles to this file, and also import other style files */
 
@@ -25,53 +26,8 @@ button {
 }
 
 /* Angular Material styling */
-.mat-form-field-underline {
-  height: 0 !important;
-}
 
-.mat-focused .mat-form-field-label {
-
-  .mat-form-field-label {
-    color: $base-text-color;
-  }
-}
-
-input.mat-input-element {
-  color: $base-text-color;
-  padding-left: 20px;
-  caret-color: $base-text-color;
-}
-
-.mat-focused {
-  .mat-form-field-underline {
-    .mat-form-field-ripple {
-      background: $base-text-color;
-      width: calc(100% - 40px);
-      margin-left: 20px;
-    }
-  }
-}
-
-.mat-form-field-invalid {
-
-  .mat-form-field-underline {
-
-    .mat-form-field-ripple {
-      background: transparent;
-    }
-  }
-}
-
-.mat-form-field-appearance-legacy {
-
-  .mat-form-field-label {
-    color: $base-text-color;
-  }
-}
-
-.mat-focused {
-  .mat-form-field-label {
-    color: $base-text-color !important;
-  }
+.mat-checkbox-indeterminate.mat-accent .mat-checkbox-background, .mat-checkbox-checked.mat-accent .mat-checkbox-background {
+  background-color: #41c7af;
 }
 
