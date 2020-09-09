@@ -17,7 +17,8 @@ import { ControlPanelComponent } from './home/control-panel/control-panel.compon
 import { TimerColumnComponent } from './home/timers-container/timer-column/timer-column.component';
 import { CreateTimerComponent } from './home/control-panel/create-timer/create-timer.component';
 import { CountdownModule } from 'ngx-countdown';
-import { ProfileSlideComponent } from './home/control-panel/profile-slide/profile-slide.component';
+import { OptionsSlideComponent } from './home/control-panel/options-slide/options-slide';
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 @NgModule({
   declarations: [
@@ -32,7 +33,7 @@ import { ProfileSlideComponent } from './home/control-panel/profile-slide/profil
     ControlPanelComponent,
     TimerColumnComponent,
     CreateTimerComponent,
-    ProfileSlideComponent,
+    OptionsSlideComponent,
   ],
   imports: [
     BrowserModule,
@@ -41,7 +42,8 @@ import { ProfileSlideComponent } from './home/control-panel/profile-slide/profil
     FormsModule,
     HttpClientModule,
     MaterialModule,
-    CountdownModule
+    CountdownModule,
+    BrowserAnimationsModule
   ],
   bootstrap: [AppComponent]
 })

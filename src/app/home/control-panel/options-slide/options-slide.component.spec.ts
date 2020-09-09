@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ProfileSlideComponent } from './profile-slide.component';
+import { OptionsSlideComponent } from './options-slide';
 
-describe('ProfileSlideComponent', () => {
-  let component: ProfileSlideComponent;
-  let fixture: ComponentFixture<ProfileSlideComponent>;
+describe('OptionsSlideComponent', () => {
+  let component: OptionsSlideComponent;
+  let fixture: ComponentFixture<OptionsSlideComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ProfileSlideComponent ]
+      declarations: [ OptionsSlideComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ProfileSlideComponent);
+    fixture = TestBed.createComponent(OptionsSlideComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
