@@ -5,8 +5,9 @@
         *ngFor="let countdownTimer of countdownTimers">
         <countdown
           *ngIf="countdownTimer.timerType === name.timerName"
-          [config]="{leftTime: countdownTimer.leftTime, format:countdownTimer.format}">
+          [config]="{leftTime: countdownTimer.leftTime, format:countdownTimer.format, stopTime:0}">
         </countdown>
+        <button *ngIf="ringTheAlarm && countdownTimer.timerType === name.timerName">Stop alarm</button>
         <br *ngIf="countdownTimer.timerType === name.timerName">
       </ng-container>
     </div>
