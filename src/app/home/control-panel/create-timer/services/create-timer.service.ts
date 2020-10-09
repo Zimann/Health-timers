@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Timer } from '../../../../shared/models/timer.model';
-import { CrossComponentService } from '../../../../services/cross-component.service';
+import { CrossComponentCommunicationService } from '../../../../services/cross-component-communication.service';
 
 
 @Injectable({
@@ -9,7 +9,7 @@ import { CrossComponentService } from '../../../../services/cross-component.serv
 
 export class CreateTimerService {
 
-  constructor(private crossComponentService: CrossComponentService) {
+  constructor(private crossComponentService: CrossComponentCommunicationService) {
   }
 
   collectCreatingData(data: Timer) {

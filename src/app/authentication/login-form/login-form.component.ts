@@ -2,7 +2,7 @@ import { AfterViewInit, Component, ElementRef, Input, OnDestroy, OnInit, ViewChi
 import { ReplaySubject, Subscription } from 'rxjs';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
-import { CrossComponentService } from '../../services/cross-component.service';
+import { CrossComponentCommunicationService } from '../../services/cross-component-communication.service';
 import { takeUntil } from 'rxjs/operators';
 
 @Component({
@@ -29,7 +29,7 @@ export class LoginFormComponent implements OnInit, OnDestroy, AfterViewInit {
 
   constructor(private formBuild: FormBuilder,
               private authService: AuthService,
-              private crossComponentService: CrossComponentService) {
+              private crossComponentService: CrossComponentCommunicationService) {
   }
 
   ngOnInit(): void {

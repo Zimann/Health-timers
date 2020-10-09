@@ -1,7 +1,7 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
-import { CrossComponentService } from '../../services/cross-component.service';
+import { CrossComponentCommunicationService } from '../../services/cross-component-communication.service';
 import { ReplaySubject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
@@ -23,7 +23,7 @@ export class SignupFormComponent implements OnInit, OnDestroy {
 
   constructor(private formBuild: FormBuilder,
               private authService: AuthService,
-              private crossComponentService: CrossComponentService) {
+              private crossComponentService: CrossComponentCommunicationService) {
   }
 
   ngOnInit(): void {

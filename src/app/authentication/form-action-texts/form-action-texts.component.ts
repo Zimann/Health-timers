@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {AuthService} from "../../services/auth.service";
-import {CrossComponentService} from "../../services/cross-component.service";
+import {CrossComponentCommunicationService} from "../../services/cross-component-communication.service";
 
 @Component({
   selector: 'app-form-action-texts',
@@ -16,7 +16,7 @@ export class FormActionTextsComponent implements OnInit {
   @Input() triggerFormMovement: boolean;
 
   constructor(private authService: AuthService,
-              private crossComponentService: CrossComponentService) { }
+              private crossComponentService: CrossComponentCommunicationService) { }
 
   ngOnInit(): void {
   }
