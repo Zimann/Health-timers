@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Subject } from 'rxjs';
 import { Router } from '@angular/router';
+
+import { Subject } from 'rxjs';
+
 import { APIDetails } from './apiKeys.model';
 import Routes from '../shared/routes/routes';
 import { SignUpResponse, ResponsesMessages } from '../shared/models/responses.model';

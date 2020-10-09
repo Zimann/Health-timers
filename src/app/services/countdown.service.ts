@@ -1,4 +1,5 @@
 import {Injectable} from '@angular/core';
+
 import {Countdown, HourConversionUnits} from "../shared/models/timer.model";
 
 @Injectable({

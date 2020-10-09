@@ -1,27 +1,30 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
+
 import {fromEvent, ReplaySubject, Subscription, timer} from 'rxjs';
-import {take, takeUntil} from 'rxjs/operators';
+import {takeUntil} from 'rxjs/operators';
+
 import Routes from '../shared/routes/routes';
-import {CrossComponentService} from '../services/cross-component.service';
+import {CrossComponentCommunicationService} from '../services/cross-component-communication.service';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit, OnDestroy {
 
   showMenu = false;
   bringInSlide = false;
   hideBottomBar = this.crossComponentService.showMessageBar$;
+  showStopAlarm = false;
 
   outSideClickSubj: Subscription;
-  listenForOutsideClicks$ = fromEvent(document, 'click');
   private destroyed$ = new ReplaySubject(1);
 
   constructor(private router: Router,
-              private crossComponentService: CrossComponentService) { }
+              private crossComponentService: CrossComponentCommunicationService) {
+  }
 
   ngOnInit() {
     let departureMomentDate;
@@ -42,38 +45,15 @@ export class HomeComponent implements OnInit, OnDestroy {
       });
   }
 
+  alarmActive() {
+    this.showStopAlarm = true;
+    // this.audioService.playAudio();
+    // console.log(this.showStopAlarm);
+  }
+
   logOut() {
     localStorage.clear();
     this.router.navigate([Routes.AUTHENTICATION]);
-  }
-
-  showProfileSection(data: boolean) {
-    this.bringInSlide = data;
-  }
-
-  setSlidingState() {
-    return this.bringInSlide;
-  }
-
-  showSettingsMenu() {
-    this.showMenu = !this.showMenu;
-    if (this.showMenu === true) {
-      let currentTarget: Element;
-      // listen for clicks outside the settings menu
-      this.outSideClickSubj = this.listenForOutsideClicks$
-        .pipe(take(2))
-        .subscribe(event => {
-          currentTarget = event.target as Element;
-          if (currentTarget.className !== 'fas fa-cogs') {
-            event.preventDefault();
-            this.showMenu = false;
-          }
-        });
-    } else {
-      if (this.outSideClickSubj) {
-        this.outSideClickSubj.unsubscribe();
-      }
-    }
   }
 
   ngOnDestroy(): void {
