@@ -1,9 +1,16 @@
-import {Component, OnInit} from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  OnInit,
+  Output,
+  QueryList,
+  ViewChildren
+} from '@angular/core';
 import {CountDownTimer, TimerTitle} from "../../shared/models/timer.model";
-import {CrossComponentService} from '../../services/cross-component.service';
+import {CrossComponentCommunicationService} from '../../services/cross-component-communication.service';
 import {CountdownService} from "../../services/countdown.service";
 import {CountdownEvent} from "ngx-countdown";
-import {AudioService} from "../../services/audio.service";
+import {TimerColumnComponent} from "./timer-column/timer-column.component";
 
 @Component({
   selector: 'app-timers-container',
@@ -18,21 +25,19 @@ export class TimersContainerComponent implements OnInit {
     {timerName: 'Workout', timerIcon: 'fa-dumbbell'},
     {timerName: 'Chilling', timerIcon: 'fa-couch'}
   ];
-
-  ringTheAlarm: boolean;
-
   countdownTimers: CountDownTimer[] = [];
+  columnIndex: number;
 
-  constructor(private crossComponentService: CrossComponentService,
-              private countDownService: CountdownService,
-              private audioService: AudioService) {
+  @Output()ringTheAlarm: EventEmitter<void> = new EventEmitter();
+  @ViewChildren(TimerColumnComponent) timerColumnComponents: QueryList<TimerColumnComponent>;
+
+  constructor(private crossComponentService: CrossComponentCommunicationService,
+              private countDownService: CountdownService) {
   }
 
   handleCountdownStop(counterData: CountdownEvent) {
     if (counterData.left === 0) {
-      this.ringTheAlarm = true;
-      this.audioService.playAudio();
-
+      this.ringTheAlarm.emit();
     }
   }
 
@@ -40,6 +45,8 @@ export class TimersContainerComponent implements OnInit {
     const timerCategories = {};
     this.colNames.forEach(el => timerCategories[el.timerName.toLowerCase()]);
     this.crossComponentService.timerData$.subscribe((data: CountDownTimer) => {
+      // TODO refactor this and try to ditch the array format for the countdownTimers
+      // use just a plain object instead
       timerCategories[data.timerType.toLowerCase()] = {...data, ...this.countDownService.calculateCountDownTime(data)};
       this.countdownTimers = [];
       this.countdownTimers = Object.values(timerCategories);

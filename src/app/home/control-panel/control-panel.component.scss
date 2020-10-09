@@ -39,12 +39,24 @@ section {
 
   .control-content {
     height: 100vh;
+    text-align: center;
+
+    .stop-alarm {
+      background-color: $pink-default;
+      font-size: 17px;
+      padding: 7px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
 
     .add-timer {
+      padding: 10px;
+    }
+
+    .add-timer, .stop-alarm {
       color: white;
       outline: none;
       border: none;
-      padding: 10px;
       border-radius: 5px;
     }
   }

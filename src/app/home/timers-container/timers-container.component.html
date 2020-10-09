@@ -1,13 +1,13 @@
-<app-timer-column *ngFor="let name of colNames" [colName]="name">
+<app-timer-column *ngFor="let name of colNames, let colIndex = index" [colName]="name">
   <div class="timer-wrapper">
     <div class="timer-body">
       <ng-container
         *ngFor="let countdownTimer of countdownTimers">
         <countdown
+          (event) = "handleCountdownStop($event)"
           *ngIf="countdownTimer.timerType === name.timerName"
           [config]="{leftTime: countdownTimer.leftTime, format:countdownTimer.format, stopTime:0}">
         </countdown>
-        <button *ngIf="ringTheAlarm && countdownTimer.timerType === name.timerName">Stop alarm</button>
         <br *ngIf="countdownTimer.timerType === name.timerName">
       </ng-container>
     </div>
