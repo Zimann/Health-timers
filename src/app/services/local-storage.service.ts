@@ -1,8 +1,10 @@
 import {Injectable} from '@angular/core';
+import {Router} from "@angular/router";
+
 import {ReplaySubject, timer} from "rxjs";
 import {takeUntil} from "rxjs/operators";
+
 import Routes from "../shared/routes/routes";
-import {Router} from "@angular/router";
 
 @Injectable({
   providedIn: 'root'
