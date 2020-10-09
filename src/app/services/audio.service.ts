@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class AudioService {
 
   audioSrc: string = '../../assets/audio/timer-alarm.mp3';
