@@ -1,8 +1,8 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 
-import { BehaviorSubject, Subject } from 'rxjs';
+import {BehaviorSubject, Subject} from 'rxjs';
 
-import { Timer } from '../shared/models/timer.model';
+import {Timer} from '../shared/models/timer.model';
 
 @Injectable({
   providedIn: 'root'
@@ -11,11 +11,14 @@ export class CrossComponentCommunicationService {
 
   public resetSignUpForm$ = new Subject<boolean>();
   public resetLoginForm$ = new Subject<boolean>();
-
-  public showMessageBar$ = new BehaviorSubject<boolean>(false);
   public timerData$ = new Subject<Timer>();
 
-  constructor() {
+  private alarmOn$ = new BehaviorSubject<boolean>(false);
+  private alarmOnObs$ = this.alarmOn$.asObservable();
+
+  setAlarmState(alarmState: boolean) {
+    this.alarmOn$.next(alarmState);
+    return this.alarmOnObs$;
   }
 
 }
