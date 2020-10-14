@@ -15,4 +15,8 @@ export class AudioService {
     this.audio.loop = true;
     this.audio.play();
   }
+
+  stopAudio() {
+    this.audio.pause();
+  }
 }

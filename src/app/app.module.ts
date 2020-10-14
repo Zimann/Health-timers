@@ -19,6 +19,7 @@ import { CreateTimerComponent } from './home/control-panel/create-timer/create-t
 import { CountdownModule } from 'ngx-countdown';
 import { OptionsSlideComponent } from './home/control-panel/options-slide/options-slide';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {AudioService} from "./services/audio.service";
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
     CountdownModule,
     BrowserAnimationsModule
   ],
+  providers: [AudioService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

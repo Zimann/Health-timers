@@ -11,11 +11,12 @@ import {CrossComponentCommunicationService} from '../../services/cross-component
 import {CountdownService} from "../../services/countdown.service";
 import {CountdownEvent} from "ngx-countdown";
 import {TimerColumnComponent} from "./timer-column/timer-column.component";
+import {AudioService} from "../../services/audio.service";
 
 @Component({
   selector: 'app-timers-container',
   templateUrl: './timers-container.component.html',
-  styleUrls: ['./timers-container.component.scss']
+  styleUrls: ['./timers-container.component.scss'],
 })
 
 export class TimersContainerComponent implements OnInit {
@@ -32,12 +33,14 @@ export class TimersContainerComponent implements OnInit {
   @ViewChildren(TimerColumnComponent) timerColumnComponents: QueryList<TimerColumnComponent>;
 
   constructor(private crossComponentService: CrossComponentCommunicationService,
-              private countDownService: CountdownService) {
+              private countDownService: CountdownService,
+              private audioService: AudioService) {
   }
 
   handleCountdownStop(counterData: CountdownEvent) {
     if (counterData.left === 0) {
-      this.ringTheAlarm.emit();
+      this.crossComponentService.setAlarmState(true);
+      this.audioService.playAudio();
     }
   }
 
@@ -45,10 +48,7 @@ export class TimersContainerComponent implements OnInit {
     const timerCategories = {};
     this.colNames.forEach(el => timerCategories[el.timerName.toLowerCase()]);
     this.crossComponentService.timerData$.subscribe((data: CountDownTimer) => {
-      // TODO refactor this and try to ditch the array format for the countdownTimers
-      // use just a plain object instead
       timerCategories[data.timerType.toLowerCase()] = {...data, ...this.countDownService.calculateCountDownTime(data)};
-      this.countdownTimers = [];
       this.countdownTimers = Object.values(timerCategories);
     });
   }

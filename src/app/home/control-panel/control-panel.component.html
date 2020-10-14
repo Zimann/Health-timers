@@ -11,7 +11,10 @@
   <div class="control-content">
     <app-create-timer></app-create-timer>
     <div class="stop-alarm-container">
-      <button class="stop-alarm" *ngIf="alarmActive">Stop alarm</button>
+      <button
+        *ngIf="alarmState | async"
+        class="stop-alarm"
+        (click)="hideAlarmButton()">Stop alarm</button>
 <!--      Add an icon here which will have an animation-->
       <!--      <i></i>-->
     </div>
