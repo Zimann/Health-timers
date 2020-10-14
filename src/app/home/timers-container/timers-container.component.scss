@@ -14,10 +14,18 @@
       height: 100%;
       overflow-y: auto;
       display: flex;
+      align-items: center;
       flex-direction: column;
 
       i {
         padding-left: 10px;
+      }
+
+      countdown {
+        color: white;
+        background: $pink-default;
+        padding: 10px 25px;
+        border-radius: 10px;
       }
 
     }
