@@ -1,62 +1,37 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnDestroy} from '@angular/core';
 import {Router} from '@angular/router';
 
-import {fromEvent, ReplaySubject, Subscription, timer} from 'rxjs';
-import {takeUntil} from 'rxjs/operators';
+import {ReplaySubject, Subscription} from 'rxjs';
 
 import Routes from '../shared/routes/routes';
-import {CrossComponentCommunicationService} from '../services/cross-component-communication.service';
+import {LocalStorageService} from "../services/local-storage.service";
+import {AudioService} from "../services/audio.service";
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
+  providers: [AudioService]
 })
-export class HomeComponent implements OnInit, OnDestroy {
+export class HomeComponent implements OnDestroy {
 
   showMenu = false;
   bringInSlide = false;
-  hideBottomBar = this.crossComponentService.showMessageBar$;
-  showStopAlarm = false;
 
   outSideClickSubj: Subscription;
   private destroyed$ = new ReplaySubject(1);
 
   constructor(private router: Router,
-              private crossComponentService: CrossComponentCommunicationService) {
-  }
-
-  ngOnInit() {
-    let departureMomentDate;
-
-    // add local storage timeStamp when navigating away
-    window.addEventListener('beforeunload', (e) => {
-      departureMomentDate = Math.round(new Date().getTime() / 1000);
-      localStorage.setItem('departureMomentDate', String(departureMomentDate));
-    });
-    // route user back to the authentication page once the token expires
-    const tokenExpiryTime = Number(localStorage.getItem('tokenExpiry')) * 1000;
-    const tokenExpiry$ = timer(tokenExpiryTime);
-    tokenExpiry$
-      .pipe(takeUntil(this.destroyed$))
-      .subscribe(() => {
-        localStorage.clear();
-        this.router.navigate([Routes.AUTHENTICATION]);
-      });
-  }
-
-  alarmActive() {
-    this.showStopAlarm = true;
-    // this.audioService.playAudio();
-    // console.log(this.showStopAlarm);
+              private localStorageService: LocalStorageService) {
   }
 
   logOut() {
-    localStorage.clear();
+    this.localStorageService.clearLocalStorage();
     this.router.navigate([Routes.AUTHENTICATION]);
   }
 
   ngOnDestroy(): void {
+    // this is used for clearing the subscription inside the LocalStorageService
     this.destroyed$.next(true);
     this.destroyed$.complete();
   }
