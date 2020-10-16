@@ -16,7 +16,6 @@ export interface CountDownTimer extends Timer {
 
 export interface Countdown {
   leftTime: number;
-  format: string;
 }
 
 export enum HourConversionUnits {

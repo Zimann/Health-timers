@@ -6,11 +6,12 @@
         <countdown
           (event) = "handleCountdownStop($event)"
           *ngIf="countdownTimer.timerType === name.timerName"
-          [config]="{leftTime: countdownTimer.leftTime, format:countdownTimer.format, stopTime:0}">
+          [config]="{
+            leftTime: countdownTimer.leftTime
+          }">
         </countdown>
         <br *ngIf="countdownTimer.timerType === name.timerName">
       </ng-container>
     </div>
   </div>
 </app-timer-column>
-<div class="bottom-separator"></div>
