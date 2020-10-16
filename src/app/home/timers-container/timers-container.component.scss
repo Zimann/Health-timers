@@ -7,7 +7,6 @@
 
   .timer-wrapper {
     padding-top: 30px;
-    height: 100vh;
     overflow: hidden;
 
     .timer-body {
@@ -29,14 +28,5 @@
       }
 
     }
-  }
-
-  .bottom-separator {
-    position: absolute;
-    top: 200px;
-    width: calc(100vw - 400px);
-    left: 400px;
-    height: 4px;
-    background: $base-green-color;
   }
 }
