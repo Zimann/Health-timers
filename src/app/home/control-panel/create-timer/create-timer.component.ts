@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { Subject } from 'rxjs';
 import { CreateTimerService } from './services/create-timer.service';
 
 @Component({
@@ -12,8 +11,8 @@ export class CreateTimerComponent implements OnInit {
 
   timerForm: FormGroup;
 
-  private timerSubj = new Subject();
-  timerSubj$ = this.timerSubj.asObservable();
+  @ViewChild('minutesTpl') minutesTpl : ElementRef;
+  @ViewChild('hoursTpl') hoursTpl : ElementRef;
 
   constructor(private formBuild: FormBuilder,
               private createTimerService: CreateTimerService) {
@@ -25,13 +24,29 @@ export class CreateTimerComponent implements OnInit {
       minutes: [''],
       timerType: ['']
     });
+
+    this.hoursInput.valueChanges.subscribe(val =>  {
+      if (val !== null) {
+        this.minutesTpl.nativeElement.removeAttribute('required');
+      } else {
+        this.minutesTpl.nativeElement.setAttribute('required', 'true');
+      }
+    });
+
+    this.minutesInput.valueChanges.subscribe(val => {
+      if (val !== null) {
+        this.hoursTpl.nativeElement.removeAttribute('required');
+      } else {
+        this.hoursTpl.nativeElement.setAttribute('required', 'true');
+      }
+    });
   }
 
-  get hoursValue() {
+  get hoursInputValue() {
     return this.timerForm.get('hours').value;
   }
 
-  get minutesValue() {
+  get minutesInputValue() {
     return this.timerForm.get('minutes').value;
   }
 
@@ -39,13 +54,20 @@ export class CreateTimerComponent implements OnInit {
     return this.timerForm.get('timerType').value;
   }
 
+  get hoursInput() {
+    return this.timerForm.get('hours');
+  }
+
+  get minutesInput(){
+    return this.timerForm.get('minutes');
+  }
+
   composeTimerValues() {
     this.createTimerService.collectCreatingData({
-      hours: this.hoursValue,
-      minutes: this.minutesValue,
+      hours: this.hoursInputValue,
+      minutes: this.minutesInputValue,
       timerType: this.timerType
     });
-    //TODO comment this out if testing is needed with multiple timers
     this.timerForm.reset();
   }
 
