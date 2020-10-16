@@ -1,16 +1,19 @@
 import {Injectable} from '@angular/core';
 
-import {Countdown, HourConversionUnits} from "../shared/models/timer.model";
+import {Countdown, CountDownTimer, HourConversionUnits} from "../shared/models/timer.model";
 
 @Injectable({
   providedIn: 'root'
 })
 export class CountdownService {
 
-  public calculateCountDownTime(data): Countdown {
+  private static calculateRemainingTime(timer: CountDownTimer): number {
+    return timer.hours * HourConversionUnits.HOUR_TO_SECONDS + timer.minutes * HourConversionUnits.MINUTE_TO_SECONDS;
+  }
+
+  public calculateCountDownTime(data: CountDownTimer): Countdown {
     return {
-      leftTime: data.hours * HourConversionUnits.HOUR_TO_SECONDS + data.minutes * HourConversionUnits.MINUTE_TO_SECONDS,
-      format: data.hours > 0 ? 'h:m:s' : 'm:s'
+      leftTime: CountdownService.calculateRemainingTime(data)
     }
   }
 
