@@ -1,6 +1,6 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { CreateTimerService } from './services/create-timer.service';
+import { CreateTimerService } from '../services/create-timer.service';
 
 @Component({
   selector: 'app-create-timer',
