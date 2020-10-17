@@ -15,11 +15,12 @@ import { TimersContainerComponent } from './home/timers-container/timers-contain
 import { ProfileSettingsComponent } from './home/control-panel/profile-settings/profile-settings.component';
 import { ControlPanelComponent } from './home/control-panel/control-panel.component';
 import { TimerColumnComponent } from './home/timers-container/timer-column/timer-column.component';
-import { CreateTimerComponent } from './home/control-panel/create-timer/create-timer.component';
+import { CreateTimerComponent } from './home/control-panel/create-timers/create-timer/create-timer.component';
 import { CountdownModule } from 'ngx-countdown';
 import { OptionsSlideComponent } from './home/control-panel/options-slide/options-slide';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {AudioService} from "./services/audio.service";
+import { CreateCustomTimerComponent } from './home/control-panel/create-timers/create-custom-timer/create-custom-timer.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import {AudioService} from "./services/audio.service";
     TimerColumnComponent,
     CreateTimerComponent,
     OptionsSlideComponent,
+    CreateCustomTimerComponent,
   ],
   imports: [
     BrowserModule,
