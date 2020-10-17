@@ -1,11 +1,11 @@
 <p>Create a custom timer</p>
-<form>
+<form [formGroup]=customTimerForm>
   <label for="hours">Hrs
-    <input name="hours" #hoursTpl required id="hours" min="0" max="12" type="number" pattern=".{2}">
+    <input name="hours" required id="hours" min="0" max="12" type="number" pattern=".{2}">
   </label>
 
   <label for="minutes">Mins
-    <input name="minutes" #minutesTpl required id="minutes" min="1" max="59" type="number" pattern=".{2}">
+    <input name="minutes" required id="minutes" min="1" max="59" type="number" pattern=".{2}">
   </label>
 
   <label for="timer_type"> Type

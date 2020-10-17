@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {FormBuilder, FormGroup} from "@angular/forms";
 
 @Component({
   selector: 'app-create-custom-timer',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreateCustomTimerComponent implements OnInit {
 
-  constructor() { }
+  customTimerForm: FormGroup;
+
+  constructor(private formBuild: FormBuilder,) { }
+
+
 
   ngOnInit(): void {
+    this.customTimerForm = this.formBuild.group({
+      hours: [''],
+      minutes: [''],
+      timerType: ['']
+    });
   }
 
 }
