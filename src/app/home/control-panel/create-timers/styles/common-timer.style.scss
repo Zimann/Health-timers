@@ -1,4 +1,4 @@
-@import '../../../shared/general-style/general-style';
+@import '../../../../shared/general-style/general-style';
 
 $control-panel-text-size: 20px;
 
@@ -10,7 +10,7 @@ $control-panel-text-size: 20px;
   p {
     width: 90%;
     text-align: center;
-    color: $base-text-color;
+    color: $pink-default;
     font-size: $base-font-size;
     border-radius: 20px;
     padding-bottom: 10px;
@@ -29,14 +29,28 @@ $control-panel-text-size: 20px;
     label {
       font-size: $control-panel-text-size - 5;
     }
-    input {
-      width: 40px;
-      border: 1px solid $base-text-color;
+
+    /* Chrome, Safari, Edge, Opera */
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
     }
 
-    select {
-      font-family: $general-font-family;
+    /* Firefox */
+    input[type=number] {
+      -moz-appearance: textfield;
+    }
+
+    input {
+      width: 40px;
+      padding-left: 8px;
+    }
+
+    input, select {
       border: 1px solid $base-text-color;
+      background: $base-green-color;
+      border-radius: 20px;
     }
 
     .button-wrapper {
@@ -50,13 +64,13 @@ $control-panel-text-size: 20px;
         color: white;
         background-color: $base-green-color;
         font-size: $control-panel-text-size - 3;
-        border: none;
         outline: none;
         cursor: pointer;
         margin-top: 20px;
         border-radius: 8px;
         padding: 5px;
         transition: all .2s linear;
+        border: 1px solid $base-text-color;
 
         &:hover {
           background-color: $base-text-color;
