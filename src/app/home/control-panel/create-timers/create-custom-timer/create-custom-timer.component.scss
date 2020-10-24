@@ -4,7 +4,34 @@ $control-panel-text-size: 20px;
 
 :host {
   margin-top: 50px;
+
+  p {
+    color: $pink-default;
+  }
+
+  form {
+
+    input {
+      border: 1px solid $pink-default;
+      width: 50%;
+    }
+
+    #timer_description {
+      width: 85%;
+    }
+
+    .button-wrapper {
+
+      button {
+
+        &:hover {
+          background-color: $pink-default;
+        }
+      }
+    }
+  }
 }
+
 
 
 

@@ -10,7 +10,7 @@ $control-panel-text-size: 20px;
   p {
     width: 90%;
     text-align: center;
-    color: $pink-default;
+    color: $base-text-color;
     font-size: $base-font-size;
     border-radius: 20px;
     padding-bottom: 10px;
@@ -50,7 +50,8 @@ $control-panel-text-size: 20px;
     input, select {
       border: 1px solid $base-text-color;
       background: $base-green-color;
-      border-radius: 20px;
+      border-top-right-radius: 20px;
+      border-bottom-right-radius: 20px;
     }
 
     .button-wrapper {
@@ -70,7 +71,7 @@ $control-panel-text-size: 20px;
         border-radius: 8px;
         padding: 5px;
         transition: all .2s linear;
-        border: 1px solid $base-text-color;
+        border: none;
 
         &:hover {
           background-color: $base-text-color;

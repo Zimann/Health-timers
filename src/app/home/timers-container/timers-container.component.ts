@@ -6,10 +6,17 @@ import {
   QueryList,
   ViewChildren
 } from '@angular/core';
-import {CountDownTimer, TimerTitle} from "../../shared/models/timer.model";
+
+import {CountdownEvent} from "ngx-countdown";
+
+import {
+  CountDownTimer,
+  TimerColumn,
+  TimerIcons,
+  TimerNames
+} from "../../shared/models/timer.model";
 import {CrossComponentCommunicationService} from '../../services/cross-component-communication.service';
 import {CountdownService} from "../../services/countdown.service";
-import {CountdownEvent} from "ngx-countdown";
 import {TimerColumnComponent} from "./timer-column/timer-column.component";
 import {AudioService} from "../../services/audio.service";
 
@@ -21,11 +28,12 @@ import {AudioService} from "../../services/audio.service";
 
 export class TimersContainerComponent implements OnInit {
 
-  colNames: TimerTitle[] = [
-    {timerName: 'Stretching', timerIcon: 'fa-running'},
-    {timerName: 'Workout', timerIcon: 'fa-dumbbell'},
-    {timerName: 'Chilling', timerIcon: 'fa-couch'}
+  colNames: TimerColumn[] = [
+    {timerName: TimerNames.STRETCHING, timerIcon: TimerIcons.RUNNING},
+    {timerName: TimerNames.WORKOUT, timerIcon: TimerIcons.DUMBBELL},
+    {timerName: TimerNames.CHILLING, timerIcon: TimerIcons.COUCH}
   ];
+
   countdownTimers: CountDownTimer[] = [];
   columnIndex: number;
 

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Timer } from '../../../../shared/models/timer.model';
+
+import {CustomTimer, Timer} from '../../../../shared/models/timer.model';
 import { CrossComponentCommunicationService } from '../../../../services/cross-component-communication.service';
 
 
@@ -12,7 +13,7 @@ export class CreateTimerService {
   constructor(private crossComponentService: CrossComponentCommunicationService) {
   }
 
-  collectCreatingData(data: Timer) {
+  collectTimerData(data: Timer) {
     this.crossComponentService.timerData$.next(
       {
         hours: data.hours,
@@ -20,6 +21,16 @@ export class CreateTimerService {
         timerType: data.timerType
       });
   };
+
+  collectCustomTimerData (data: CustomTimer) {
+    this.crossComponentService.customTimerData$.next(
+      {
+        hours: data.hours,
+        minutes: data.minutes,
+        timerDescription: data.timerDescription
+      }
+    )
+  }
 
 }
 

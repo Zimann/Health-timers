@@ -4,6 +4,10 @@
   display: flex;
 }
 
+.timers-wrapper {
+  width: calc(100% - 400px);
+}
+
 .third-party-text {
   position: absolute;
   bottom: 10px;
@@ -14,3 +18,4 @@
     color: $base-green-color;
   }
 }
+

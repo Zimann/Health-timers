@@ -1,7 +1,6 @@
 @import '../../shared/general-style/general-style';
 
 :host {
-  width: calc(100% - 400px);
   height: 200px;
   display: flex;
 
@@ -22,11 +21,10 @@
 
       countdown {
         color: white;
-        background: $pink-default;
+        background: $base-text-color;
         padding: 10px 25px;
         border-radius: 10px;
       }
-
     }
   }
 }

@@ -7,6 +7,7 @@ import {take} from "rxjs/operators";
 import {CrossComponentCommunicationService} from "../../services/cross-component-communication.service";
 import {LocalStorageService} from "../../services/local-storage.service";
 import {AudioService} from "../../services/audio.service";
+import {AlarmTypes} from "../../shared/models/timer.model";
 
 @Component({
   selector: 'app-control-panel',
@@ -18,7 +19,9 @@ export class ControlPanelComponent implements OnInit {
 
   showMenu = false;
   bringInSlide = false;
-  alarmState: Observable<boolean>;
+  alarmState$: Observable<boolean>;
+  customAlarmState$: Observable<boolean>;
+  alarmTypes = AlarmTypes;
 
   outSideClickSubj = new Subscription();
   listenForOutsideClicks$ = fromEvent(document, 'click');
@@ -32,7 +35,8 @@ export class ControlPanelComponent implements OnInit {
 
   ngOnInit() {
     this.localStorageService.trackDepartureTime(this.destroyed$);
-    this.alarmState = this.crossComponentService.setAlarmState(false);
+    this.alarmState$ = this.crossComponentService.setAlarmState(false);
+    this.customAlarmState$ = this.crossComponentService.setCustomAlarmState(false);
   }
 
   showProfileSection(data: boolean) {
@@ -61,9 +65,14 @@ export class ControlPanelComponent implements OnInit {
     }
   }
 
-  hideAlarmButton() {
-    this.alarmState = this.crossComponentService.setAlarmState(false);
-    this.audioService.stopAudio();
+  hideAlarmButton(alarmType) {
+    if (alarmType === AlarmTypes.REGULAR) {
+      this.alarmState$ = this.crossComponentService.setAlarmState(false);
+      this.audioService.stopAudio();
+    } else if(alarmType === AlarmTypes.CUSTOM) {
+      this.customAlarmState$ = this.crossComponentService.setCustomAlarmState(false);
+      this.audioService.stopAudio();
+    }
   };
 
   ngOnDestroy(): void {

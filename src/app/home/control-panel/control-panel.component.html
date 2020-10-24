@@ -10,14 +10,19 @@
   </div>
   <div class="control-content">
     <app-create-timer></app-create-timer>
+    <button
+      *ngIf="alarmState$ | async"
+      class="stop-alarm"
+      (click)="hideAlarmButton(alarmTypes.REGULAR)">Stop alarm</button>
+    <!--      Add an icon here which will have an animation-->
+    <!--      <i></i>-->
     <app-create-custom-timer></app-create-custom-timer>
+    <button
+      *ngIf="customAlarmState$ | async"
+      class="stop-alarm"
+      (click)="hideAlarmButton(alarmTypes.CUSTOM)">Stop alarm</button>
     <div class="stop-alarm-container">
-      <button
-        *ngIf="alarmState | async"
-        class="stop-alarm"
-        (click)="hideAlarmButton()">Stop alarm</button>
-<!--      Add an icon here which will have an animation-->
-      <!--      <i></i>-->
+
     </div>
     <app-options-slide
       [slideIn]="setSlidingState()"

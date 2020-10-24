@@ -1,17 +1,12 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {TimerTitle} from "../../../shared/models/timer.model";
+import {Component, Input} from '@angular/core';
+import {TimerColumn} from "../../../shared/models/timer.model";
 
 @Component({
   selector: 'app-timer-column',
   templateUrl: './timer-column.component.html',
   styleUrls: ['./timer-column.component.scss']
 })
-export class TimerColumnComponent implements OnInit {
+export class TimerColumnComponent {
 
-  @Input()colName: TimerTitle;
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+  @Input()colName: TimerColumn;
 }

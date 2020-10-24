@@ -1,5 +1,6 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+
 import { CreateTimerService } from '../services/create-timer.service';
 
 @Component({
@@ -62,8 +63,8 @@ export class CreateTimerComponent implements OnInit {
     return this.timerForm.get('minutes');
   }
 
-  composeTimerValues() {
-    this.createTimerService.collectCreatingData({
+  createTimer() {
+    this.createTimerService.collectTimerData({
       hours: this.hoursInputValue,
       minutes: this.minutesInputValue,
       timerType: this.timerType

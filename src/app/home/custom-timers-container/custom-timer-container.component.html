@@ -1,0 +1,8 @@
+<p class="custom-timer-title">Custom Timers</p>
+<div class="custom-timer-container" *ngFor="let customCountdownTimer of customCountdownTimers">
+  <countdown
+    (event) = "handleCustomCountdownStop($event)"
+    [config]="{leftTime: customCountdownTimer.leftTime}">
+  </countdown>
+  <p>{{customCountdownTimer.timerDescription}}</p>
+</div>
