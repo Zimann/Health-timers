@@ -1,12 +1,12 @@
 <p>Create a custom timer</p>
 <form [formGroup]=customTimerForm (ngSubmit)="createCustomTimer()" ngNativeValidate>
 
-  <label for="hours">Hrs
-    <input name="hours" #customHoursTpl formControlName="customHours" id="hours" min="0" max="12" type="number" pattern=".{2}">
+  <label for="customHours">Hrs
+    <input name="hours" #customHoursTpl formControlName="customHours" id="customHours" min="0" max="12" type="number" pattern=".{2}">
   </label>
 
-  <label for="minutes">Mins
-    <input name="minutes" #customMinutesTpl formControlName="customMinutes" required id="minutes" min="1" max="59" type="number" pattern=".{2}">
+  <label for="customMinutes">Mins
+    <input name="minutes" #customMinutesTpl formControlName="customMinutes" required id="customMinutes" min="1" max="59" type="number" pattern=".{2}">
   </label>
 
   <label for="timer_description"> Timer title
