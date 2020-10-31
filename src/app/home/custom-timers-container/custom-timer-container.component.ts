@@ -1,9 +1,11 @@
 import {Component, OnInit} from '@angular/core';
-import {CustomCountDownTimer} from "../../shared/models/timer.model";
-import {CrossComponentCommunicationService} from "../../services/cross-component-communication.service";
-import {CountdownService} from "../../services/countdown.service";
-import {AudioService} from "../../services/audio.service";
-import {CountdownEvent} from "ngx-countdown";
+
+import {CountdownEvent} from 'ngx-countdown';
+
+import {CustomCountDownTimer} from '../../shared/models/timer.model';
+import {CrossComponentCommunicationService} from '../../services/cross-component-communication.service';
+import {CountdownService} from '../../services/countdown.service';
+import {AudioService} from '../../services/audio.service';
 
 @Component({
   selector: 'app-custom-timer-container',
@@ -21,16 +23,23 @@ export class CustomTimerContainerComponent implements OnInit {
 
   ngOnInit(): void {
     this.crossComponentService.customTimerData$.subscribe((data: CustomCountDownTimer) => {
-      this.customCountdownTimers.push({...data, ...this.countDownService.calculateCountDownTime(data)});
+      if (this.customCountdownTimers.length < 4) {
+        this.customCountdownTimers.push({...data, ...this.countDownService.calculateCountDownTime(data)});
+      } else {
+        this.customCountdownTimers[3] = {...data, ...this.countDownService.calculateCountDownTime(data)};
+      }
     });
   }
-
 
   handleCustomCountdownStop(counterData: CountdownEvent) {
     if (counterData.left === 0) {
       this.crossComponentService.setCustomAlarmState(true);
       this.audioService.playAudio();
     }
+  }
+
+  deleteCustomTimer(timerIndex: number) {
+    this.customCountdownTimers.splice(timerIndex,1);
   }
 
 }

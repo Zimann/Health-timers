@@ -33,10 +33,16 @@
 
     countdown {
       color: #ff6e6e;
+      padding: 10px 0 10px 25px;
     }
 
     p {
-      margin-left: 10px;
+      margin: 0 25px;
+    }
+
+    i {
+      padding: 11px;
+      cursor: pointer;
     }
   }
 }

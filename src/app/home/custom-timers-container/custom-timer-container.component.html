@@ -1,10 +1,11 @@
 <p class="custom-timer-title">Custom Timers</p>
 <div class="custom-timer-wrapper">
-  <div class="custom-timer-container" *ngFor="let customCountdownTimer of customCountdownTimers; ">
+  <div class="custom-timer-container" *ngFor="let customCountdownTimer of customCountdownTimers; let index = i">
     <countdown
       (event) = "handleCustomCountdownStop($event)"
       [config]="{leftTime: customCountdownTimer.leftTime}">
     </countdown>
     <p>{{customCountdownTimer.timerDescription}}</p>
+    <i class="fas fa-trash" (click)="deleteCustomTimer(index)"></i>
   </div>
 </div>
