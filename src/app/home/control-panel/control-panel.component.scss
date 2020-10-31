@@ -2,12 +2,12 @@
 
 section {
   height: 100%;
-  width: 400px;
+  width: $control-panel-width;
   background-color: #ffffff;
   //border-right: 4px solid $base-green-color;
-  -webkit-box-shadow: 1px 1px 5px 0px $base-text-color;
-  -moz-box-shadow: 1px 1px 5px 0px $base-text-color;
-  box-shadow: 1px 1px 5px 0px $base-text-color;;
+  -webkit-box-shadow: 1px 1px 5px 0 $base-text-color;
+  -moz-box-shadow: 1px 1px 5px 0 $base-text-color;
+  box-shadow: 1px 1px 5px 0 $base-text-color;
 
 
   .profile-area {

@@ -8,11 +8,16 @@ $flat-green-gradient: linear-gradient(-60deg, #41c7af 0%, #54e38e 100%);
 $flat-green-gradient-reverse: linear-gradient(-60deg, #54e38e 0%, #41c7af 100%);
 $hover-button-color: #cd2222;
 $pink-default: #ff6e6e;
+$control-panel-width: 400px;
 $default-transition: all .1s linear;
 $base-font-size: 20px;
 $smaller-base-font-size: $base-font-size - 2px;
 $general-font-family: Roboto, "Helvetica Neue", sans-serif;
 
+countdown {
+  padding: 10px 25px;
+  border-radius: 10px;
+}
 
 /* Form Validation classes */
 
@@ -26,6 +31,7 @@ $general-font-family: Roboto, "Helvetica Neue", sans-serif;
 
 /* mixins */
 
-@mixin for-small-height {
-  @media (max-height: 599px) { @content; }
+@mixin base-box-shadow {
+  -webkit-box-shadow: -1px 6px 12px -5px #000000;
+  box-shadow: -1px 6px 12px -5px #000000;
 }
