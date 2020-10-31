@@ -1,13 +1,13 @@
 import {Component, OnInit} from '@angular/core';
-import {Router} from "@angular/router";
+import {Router} from '@angular/router';
 
-import {fromEvent, Observable, ReplaySubject, Subscription} from "rxjs";
-import {take} from "rxjs/operators";
+import {fromEvent, Observable, ReplaySubject, Subscription} from 'rxjs';
+import {take} from 'rxjs/operators';
 
-import {CrossComponentCommunicationService} from "../../services/cross-component-communication.service";
-import {LocalStorageService} from "../../services/local-storage.service";
-import {AudioService} from "../../services/audio.service";
-import {AlarmTypes} from "../../shared/models/timer.model";
+import {CrossComponentCommunicationService} from '../../services/cross-component-communication.service';
+import {LocalStorageService} from '../../services/local-storage.service';
+import {AudioService} from '../../services/audio.service';
+import {AlarmTypes} from '../../shared/models/timer.model';
 
 @Component({
   selector: 'app-control-panel',
@@ -68,11 +68,10 @@ export class ControlPanelComponent implements OnInit {
   hideAlarmButton(alarmType) {
     if (alarmType === AlarmTypes.REGULAR) {
       this.alarmState$ = this.crossComponentService.setAlarmState(false);
-      this.audioService.stopAudio();
-    } else if(alarmType === AlarmTypes.CUSTOM) {
+    } else if (alarmType === AlarmTypes.CUSTOM) {
       this.customAlarmState$ = this.crossComponentService.setCustomAlarmState(false);
-      this.audioService.stopAudio();
     }
+      this.audioService.stopAudio();
   };
 
   ngOnDestroy(): void {
