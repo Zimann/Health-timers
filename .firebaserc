@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "the-gents-chat": {
+      "hosting": {
+        "health-timers": [
+          "the-gents-chat"
+        ]
+      }
+    }
+  }
+}

@@ -2,7 +2,7 @@
 <section [ngClass]="{'bring-in-options': slideIn}">
   <hr class="upper-border">
   <div class="options-wrapper">
-    <mat-checkbox>Activate Notifications</mat-checkbox>
+    <mat-checkbox (change)="startNotificationProcess($event.checked)">Activate Notifications & turn sound off</mat-checkbox>
     <button>What's the deal with regular breaks?</button>
   </div>
   <hr class="bottom-border">

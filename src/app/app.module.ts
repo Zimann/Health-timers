@@ -9,6 +9,11 @@ import { SignupFormComponent } from './authentication/signup-form/signup-form.co
 import { FormActionTextsComponent } from './authentication/form-action-texts/form-action-texts.component';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
+import {AngularFireModule} from '@angular/fire';
+import {environment} from '../environments/environment';
+import {AngularFireDatabaseModule} from '@angular/fire/database';
+import {AngularFireAuthModule} from '@angular/fire/auth';
+import {AngularFireMessagingModule} from '@angular/fire/messaging';
 
 @NgModule({
   declarations: [
@@ -24,6 +29,10 @@ import { HttpClientModule } from "@angular/common/http";
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
+    AngularFireDatabaseModule,
+    AngularFireAuthModule,
+    AngularFireMessagingModule,
+    AngularFireModule.initializeApp(environment.firebase)
   ],
   bootstrap: [AppComponent]
 })
