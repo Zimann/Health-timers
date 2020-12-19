@@ -1,12 +1,14 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Router } from '@angular/router';
+import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {Router} from '@angular/router';
 
-import { Subject } from 'rxjs';
+import {Subject} from 'rxjs';
 
-import { APIDetails } from './apiKeys.model';
+import {APIDetails} from '../shared/models/apiKeys.model';
 import Routes from '../shared/routes/routes';
-import { SignUpResponse, ResponsesMessages } from '../shared/models/responses.model';
+import {SignUpResponse, ResponsesMessages} from '../shared/models/responses.model';
+import {LocalStorageService} from './local-storage.service';
+import {LocalStorageKeys} from '../shared/models/localStorageKeys';
 
 @Injectable({
   providedIn: 'root'
@@ -23,8 +25,11 @@ export class AuthService {
   private static signUpEndpoint = `${APIDetails.signUpEndpoint}${APIDetails.firebaseAPIKey}`;
   private static logInEndpoint = `${APIDetails.logInEndpoint}${APIDetails.firebaseAPIKey}`;
 
-  constructor(private http: HttpClient,
-              private router: Router) {
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+    private localStorageService: LocalStorageService
+  ) {
   }
 
   signUpUser(email: string, password: string) {
@@ -46,16 +51,20 @@ export class AuthService {
 
   logInUser(email: string, password: string) {
     this.logInLoaderSubj.next(false);
-    this.http.post<SignUpResponse>(AuthService.logInEndpoint, {
-      email,
-      password,
-      returnSecureToken: true
-    }).subscribe(
+    this.http.post<SignUpResponse>(AuthService.logInEndpoint,
+      {
+        email,
+        password,
+        returnSecureToken: true
+      }
+    ).subscribe(
       (data) => {
-        localStorage.clear();
+        this.localStorageService.clearLocalStorage();
         const requestMomentDate = Math.round(new Date().getTime() / 1000);
-        localStorage.setItem('requestMomentDate', String(requestMomentDate));
-        localStorage.setItem('tokenExpiry', data.expiresIn);
+        this.localStorageService.setItem(LocalStorageKeys.REQUESTMOMENTDATE, String(requestMomentDate));
+        this.localStorageService.setItem(LocalStorageKeys.TOKENEXPIRY, data.expiresIn);
+        this.localStorageService.setItem(LocalStorageKeys.FIREBASEUID, data.localId);
+
         this.loggedInSubj.next(true);
         this.logInLoaderSubj.next(true);
         this.router.navigate([Routes.HOME]);
@@ -65,5 +74,4 @@ export class AuthService {
         this.logInLoaderSubj.next(true);
       });
   }
-
 }

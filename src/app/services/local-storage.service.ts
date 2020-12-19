@@ -36,4 +36,12 @@ export class LocalStorageService {
   clearLocalStorage() {
     localStorage.clear();
   }
+
+  setItem(key: string, value: string) {
+    localStorage.setItem(key, value);
+  }
+
+  getItem(key: string) {
+    return localStorage.getItem(key);
+  }
 }
