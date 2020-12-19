@@ -32,7 +32,7 @@
     }
 
     countdown {
-      color: #ff6e6e;
+      color: $pink-default;
       padding: 10px 0 10px 25px;
     }
 
@@ -43,6 +43,11 @@
     i {
       padding: 11px;
       cursor: pointer;
+      transition: .1s linear;
+
+      &:hover {
+        color: $pink-default;
+      }
     }
   }
 }

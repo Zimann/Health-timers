@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 
 import {CountdownEvent} from 'ngx-countdown';
 
-import {CustomCountDownTimer} from '../../shared/models/timer.model';
+import {AlarmTypes, CustomCountDownTimer} from '../../shared/models/timer.model';
 import {CrossComponentCommunicationService} from '../../services/cross-component-communication.service';
 import {CountdownService} from '../../services/countdown.service';
 import {AudioService} from '../../services/audio.service';
@@ -34,7 +34,7 @@ export class CustomTimerContainerComponent implements OnInit {
   handleCustomCountdownStop(counterData: CountdownEvent) {
     if (counterData.left === 0) {
       this.crossComponentService.setCustomAlarmState(true);
-      this.audioService.playAudio();
+      this.audioService.playAudio(AlarmTypes.CUSTOM);
     }
   }
 

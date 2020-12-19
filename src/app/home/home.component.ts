@@ -1,7 +1,7 @@
 import {Component, OnDestroy} from '@angular/core';
 import {Router} from '@angular/router';
 
-import {ReplaySubject, Subscription} from 'rxjs';
+import {BehaviorSubject, ReplaySubject, Subscription} from 'rxjs';
 
 import Routes from '../shared/routes/routes';
 import {LocalStorageService} from "../services/local-storage.service";
@@ -17,12 +17,15 @@ export class HomeComponent implements OnDestroy {
 
   showMenu = false;
   bringInSlide = false;
+  message: BehaviorSubject<string>;
 
   outSideClickSubj: Subscription;
   private destroyed$ = new ReplaySubject(1);
 
-  constructor(private router: Router,
-              private localStorageService: LocalStorageService) {
+  constructor(
+    private router: Router,
+    private localStorageService: LocalStorageService,
+  ) {
   }
 
   logOut() {

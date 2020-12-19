@@ -39,6 +39,8 @@ import {AudioService} from '../services/audio.service';
     CountdownModule,
     ReactiveFormsModule,
   ],
-  providers: [AudioService]
+  providers: [
+    AudioService,
+  ]
 })
 export class HomeModule { }

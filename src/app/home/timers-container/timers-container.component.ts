@@ -10,6 +10,7 @@ import {
 import {CountdownEvent} from "ngx-countdown";
 
 import {
+  AlarmTypes,
   CountDownTimer,
   TimerColumn,
   TimerIcons,
@@ -48,7 +49,7 @@ export class TimersContainerComponent implements OnInit {
   handleCountdownStop(counterData: CountdownEvent) {
     if (counterData.left === 0) {
       this.crossComponentService.setAlarmState(true);
-      this.audioService.playAudio();
+      this.audioService.playAudio(AlarmTypes.REGULAR);
     }
   }
 

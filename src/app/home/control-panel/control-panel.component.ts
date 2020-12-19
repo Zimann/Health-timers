@@ -71,7 +71,7 @@ export class ControlPanelComponent implements OnInit {
     } else if (alarmType === AlarmTypes.CUSTOM) {
       this.customAlarmState$ = this.crossComponentService.setCustomAlarmState(false);
     }
-      this.audioService.stopAudio();
+      this.audioService.stopAudio(alarmType);
   };
 
   ngOnDestroy(): void {
