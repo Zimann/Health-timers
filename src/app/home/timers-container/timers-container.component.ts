@@ -20,6 +20,7 @@ import {CrossComponentCommunicationService} from '../../services/cross-component
 import {CountdownService} from "../../services/countdown.service";
 import {TimerColumnComponent} from "./timer-column/timer-column.component";
 import {AudioService} from "../../services/audio.service";
+import {NotificationMessagingService} from '../../services/notification-messaging.service';
 
 @Component({
   selector: 'app-timers-container',
@@ -43,13 +44,17 @@ export class TimersContainerComponent implements OnInit {
 
   constructor(private crossComponentService: CrossComponentCommunicationService,
               private countDownService: CountdownService,
-              private audioService: AudioService) {
+              private audioService: AudioService,
+              private notificationMessagingService: NotificationMessagingService) {
   }
 
-  handleCountdownStop(counterData: CountdownEvent) {
+  handleCountdownStop(counterData: CountdownEvent, column: TimerColumn) {
     if (counterData.left === 0) {
       this.crossComponentService.setAlarmState(true);
-      this.audioService.playAudio(AlarmTypes.REGULAR);
+      if (!this.crossComponentService.turnSoundOff$.value) {
+        this.audioService.playAudio(AlarmTypes.REGULAR);
+      }
+      this.notificationMessagingService.pushNotification(column.timerName);
     }
   }
 

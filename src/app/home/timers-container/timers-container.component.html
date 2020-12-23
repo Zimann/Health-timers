@@ -4,7 +4,7 @@
       <ng-container
         *ngFor="let countdownTimer of countdownTimers">
         <countdown
-          (event) = "handleCountdownStop($event)"
+          (event) = "handleCountdownStop($event, name)"
           *ngIf="countdownTimer.timerType === name.timerName"
           [config]="{
             leftTime: countdownTimer.leftTime
