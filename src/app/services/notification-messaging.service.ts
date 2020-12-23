@@ -6,7 +6,6 @@ import {take} from 'rxjs/operators';
 import {HttpClient} from '@angular/common/http';
 import {NotificationBody, PriorityType} from '../shared/models/notifications.model';
 import {FireBaseAPIDetails} from '../shared/models/apiKeys';
-import {LocalStorageService} from './local-storage.service';
 
 @Injectable()
 export class NotificationMessagingService {

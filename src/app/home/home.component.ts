@@ -1,5 +1,5 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Params, Router} from '@angular/router';
 
 import {BehaviorSubject, ReplaySubject, Subscription} from 'rxjs';
 
@@ -25,6 +25,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   constructor(
     private router: Router,
+    private route: ActivatedRoute,
     private localStorageService: LocalStorageService,
     private notificationMessagingService: NotificationMessagingService
   ) {
@@ -32,6 +33,10 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.notificationMessagingService.getPermission();
+
+    this.route.url.subscribe((url: Params) => {
+      console.log(this.router.url);
+    });
   }
 
   logOut() {

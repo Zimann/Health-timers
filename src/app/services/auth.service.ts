@@ -6,7 +6,7 @@ import {Subject} from 'rxjs';
 
 import {FireBaseAPIDetails} from '../shared/models/apiKeys';
 import Routes from '../shared/routes/routes';
-import {SignUpResponse, ResponsesMessages} from '../shared/models/responses.model';
+import {ResponsesMessages, FBResponse} from '../shared/models/responses.model';
 import {LocalStorageService} from './local-storage.service';
 import {LocalStorageKeys} from '../shared/models/localStorageKeys';
 
@@ -34,7 +34,7 @@ export class AuthService {
 
   signUpUser(email: string, password: string) {
     this.signUpLoaderSubj.next(false);
-    this.http.post<SignUpResponse>(AuthService.signUpEndpoint, {
+    this.http.post<FBResponse>(AuthService.signUpEndpoint, {
       email,
       password,
       returnSecureToken: true
@@ -51,7 +51,7 @@ export class AuthService {
 
   logInUser(email: string, password: string) {
     this.logInLoaderSubj.next(false);
-    this.http.post<SignUpResponse>(AuthService.logInEndpoint,
+    this.http.post<FBResponse>(AuthService.logInEndpoint,
       {
         email,
         password,
@@ -61,9 +61,9 @@ export class AuthService {
       (data) => {
         this.localStorageService.clearLocalStorage();
         const requestMomentDate = Math.round(new Date().getTime() / 1000);
-        this.localStorageService.setItem(LocalStorageKeys.REQUESTMOMENTDATE, String(requestMomentDate));
-        this.localStorageService.setItem(LocalStorageKeys.TOKENEXPIRY, data.expiresIn);
-        this.localStorageService.setItem(LocalStorageKeys.FIREBASEUID, data.localId);
+        this.localStorageService.setItem(LocalStorageKeys.REQUEST_MOMENT_DATE, String(requestMomentDate));
+        this.localStorageService.setItem(LocalStorageKeys.TOKEN_EXPIRY, data.expiresIn);
+        this.localStorageService.setItem(LocalStorageKeys.FIREBASE_UID, data.localId);
 
         this.loggedInSubj.next(true);
         this.logInLoaderSubj.next(true);

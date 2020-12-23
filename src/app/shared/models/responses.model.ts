@@ -1,4 +1,4 @@
-export interface SignUpResponse {
+export interface FBResponse {
   idToken: string;
   email: string;
   refreshToken: string;
