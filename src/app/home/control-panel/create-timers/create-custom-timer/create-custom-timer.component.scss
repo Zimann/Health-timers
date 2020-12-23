@@ -7,6 +7,11 @@ $control-panel-text-size: 20px;
 
   p {
     color: $pink-default;
+
+    &.timer-limit-warning {
+     font-size: $base-font-size - 5px;
+      border-bottom: none;
+    }
   }
 
   form {
@@ -26,6 +31,11 @@ $control-panel-text-size: 20px;
 
         &:hover {
           background-color: $pink-default;
+        }
+
+        &:disabled {
+          background-color: lightgray;
+          cursor: not-allowed;
         }
       }
     }

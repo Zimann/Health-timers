@@ -10,14 +10,18 @@
   </label>
 
   <label for="timer_description"> Timer title
-    <input name="timerDescription" #customDescriptionTpl formControlName="customDescription" required type="text" id="timer_description"  maxLength="100">
+    <input name="timerDescription" formControlName="customDescription" required type="text" id="timer_description"  maxLength="100">
   </label>
 
   <div class="button-wrapper">
-    <button type="submit">
+    <button [disabled]="(totalCustomTimers$ | async) >= customTimerLimit" type="submit">
       Add Custom Timer
       <i class="fas fa-plus-circle"></i>
     </button>
   </div>
 
 </form>
+
+<p class="timer-limit-warning" *ngIf="(totalCustomTimers$ | async) >= customTimerLimit">
+  You have reached the custom timer limit. <br> Please delete one to continue adding more timers.
+</p>

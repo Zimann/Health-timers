@@ -6,6 +6,7 @@ import {AlarmTypes, CustomCountDownTimer} from '../../shared/models/timer.model'
 import {CrossComponentCommunicationService} from '../../services/cross-component-communication.service';
 import {CountdownService} from '../../services/countdown.service';
 import {AudioService} from '../../services/audio.service';
+import {NotificationMessagingService} from '../../services/notification-messaging.service';
 
 @Component({
   selector: 'app-custom-timer-container',
@@ -16,30 +17,36 @@ export class CustomTimerContainerComponent implements OnInit {
 
   customCountdownTimers: CustomCountDownTimer[] = [];
 
-  constructor(private crossComponentService: CrossComponentCommunicationService,
+  constructor(private crossComponentCommunicationService: CrossComponentCommunicationService,
               private countDownService: CountdownService,
-              private audioService: AudioService) {
+              private audioService: AudioService,
+              private notificationMessagingService: NotificationMessagingService
+  ) {
   }
 
   ngOnInit(): void {
-    this.crossComponentService.customTimerData$.subscribe((data: CustomCountDownTimer) => {
-      if (this.customCountdownTimers.length < 4) {
+    this.crossComponentCommunicationService.customTimerData$.subscribe((data: CustomCountDownTimer) => {
+      if (this.customCountdownTimers.length < 8) {
         this.customCountdownTimers.push({...data, ...this.countDownService.calculateCountDownTime(data)});
-      } else {
-        this.customCountdownTimers[3] = {...data, ...this.countDownService.calculateCountDownTime(data)};
+        this.crossComponentCommunicationService.totalCustomTimers$.next(this.customCountdownTimers.length);
       }
     });
   }
 
-  handleCustomCountdownStop(counterData: CountdownEvent) {
+  handleCustomCountdownStop(counterData: CountdownEvent, timerDescription: string) {
     if (counterData.left === 0) {
-      this.crossComponentService.setCustomAlarmState(true);
-      this.audioService.playAudio(AlarmTypes.CUSTOM);
+      this.crossComponentCommunicationService.setCustomAlarmState(true);
+
+      if (!this.crossComponentCommunicationService.turnSoundOff$.value) {
+        this.audioService.playAudio(AlarmTypes.CUSTOM);
+      }
+
+      this.notificationMessagingService.pushNotification(timerDescription);
     }
   }
 
   deleteCustomTimer(timerIndex: number) {
-    this.customCountdownTimers.splice(timerIndex,1);
+    this.customCountdownTimers.splice(timerIndex, 1);
+    this.crossComponentCommunicationService.totalCustomTimers$.next(this.customCountdownTimers.length);
   }
-
 }

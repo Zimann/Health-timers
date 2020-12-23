@@ -9,6 +9,8 @@ import {Timer, CustomTimer} from '../shared/models/timer.model';
 })
 export class CrossComponentCommunicationService {
 
+  public totalCustomTimers$ = new Subject<number>();
+  public turnSoundOff$ = new BehaviorSubject<boolean>(false);
   public resetSignUpForm$ = new Subject<boolean>();
   public resetLoginForm$ = new Subject<boolean>();
   public timerData$ = new Subject<Timer>();
