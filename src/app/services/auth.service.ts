@@ -4,7 +4,7 @@ import {Router} from '@angular/router';
 
 import {Subject} from 'rxjs';
 
-import {APIDetails} from '../shared/models/apiKeys.model';
+import {FireBaseAPIDetails} from '../shared/models/apiKeys';
 import Routes from '../shared/routes/routes';
 import {SignUpResponse, ResponsesMessages} from '../shared/models/responses.model';
 import {LocalStorageService} from './local-storage.service';
@@ -22,8 +22,8 @@ export class AuthService {
 
   private static failedSignUpMessage = ResponsesMessages.FAILED_SIGNUP_MESSAGE;
   private static failedLogInMessage = ResponsesMessages.FAILED_LOGIN_MESSAGE;
-  private static signUpEndpoint = `${APIDetails.signUpEndpoint}${APIDetails.firebaseAPIKey}`;
-  private static logInEndpoint = `${APIDetails.logInEndpoint}${APIDetails.firebaseAPIKey}`;
+  private static signUpEndpoint = `${FireBaseAPIDetails.signUpEndpoint}${FireBaseAPIDetails.firebaseAPIKey}`;
+  private static logInEndpoint = `${FireBaseAPIDetails.logInEndpoint}${FireBaseAPIDetails.firebaseAPIKey}`;
 
   constructor(
     private http: HttpClient,

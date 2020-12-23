@@ -1,5 +1,5 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {MessagingService} from '../../../services/messaging.service';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {CrossComponentCommunicationService} from '../../../services/cross-component-communication.service';
 
 @Component({
   selector: 'app-options-slide',
@@ -11,19 +11,13 @@ export class OptionsSlideComponent {
   @Input() slideIn: boolean;
   @Output() slideOutEmitter = new EventEmitter<boolean>();
 
-  message;
-  constructor(private messagingService: MessagingService) { }
+  constructor(
+    private crossComponentCommunicationService: CrossComponentCommunicationService
+  ) { }
 
 
   startNotificationProcess(checkState : boolean) {
-    if (checkState) {
-      this.messagingService.getPermission();
-      this.messagingService.receiveMessage();
-      this.message = this.messagingService.currentMessage;
-    } else {
-
-      // deactivate notifications
-    }
+      this.crossComponentCommunicationService.turnSoundOff$.next(checkState);
   }
 
 }

@@ -11,9 +11,7 @@ import {v4 as uuidv4} from 'uuid'
 // ----------------------------------------------
 export class DbService {
 
-  // this is the only database reference that needs to exist inside the app
-  firebaseDb = firebase.database();
-  firebaseAuth = firebase.auth();
+  private firebaseDb = firebase.database();
   private userUid = this.localStorageService.getItem(LocalStorageKeys.FIREBASEUID);
 
   constructor(
