@@ -14,17 +14,11 @@ import {LocalStorageKeys} from '../shared/models/localStorageKeys';
 export class AuthenticationComponent implements OnInit {
 
   public initiateSlide: boolean;
-  constructor(private router: Router,
-              private localStorageService: LocalStorageService,
-              private route: ActivatedRoute) { }
+
+  constructor(private authService: AuthService,) { }
 
   ngOnInit(): void {
-    // logic to keep the user logged in even when opening a separate tab based on the token expiry value
-    // TODO include logic in a separate service
-    const timeDif = Number(localStorage.getItem('departureMomentDate')) - Number(localStorage.getItem('requestMomentDate'));
-    if (timeDif < Number(localStorage.getItem('tokenExpiry')) && localStorage.getItem('requestMomentDate')) {
-      this.router.navigate([Routes.HOME]);
-    }
+    this.authService.calculateRemainingLoginTime();
   }
 
   moveForms(data: boolean) {

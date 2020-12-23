@@ -74,4 +74,12 @@ export class AuthService {
         this.logInLoaderSubj.next(true);
       });
   }
+
+  // logic to keep the user logged in even when opening a separate tab based on the token expiry value
+  calculateRemainingLoginTime() {
+    const timeDif = Number(localStorage.getItem(LocalStorageKeys.DEPARTURE_MOMENT_DATE)) - Number(localStorage.getItem(LocalStorageKeys.REQUEST_MOMENT_DATE));
+    if (timeDif < Number(localStorage.getItem(LocalStorageKeys.TOKEN_EXPIRY)) && localStorage.getItem(LocalStorageKeys.REQUEST_MOMENT_DATE)) {
+      this.router.navigate([Routes.HOME]);
+    }
+  }
 }
