@@ -35,3 +35,9 @@ countdown {
   -webkit-box-shadow: -1px 6px 12px -5px #000000;
   box-shadow: -1px 6px 12px -5px #000000;
 }
+
+@mixin flex-center {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
