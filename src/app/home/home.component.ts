@@ -1,4 +1,4 @@
-import {Component, OnDestroy} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 
 import {BehaviorSubject, ReplaySubject, Subscription} from 'rxjs';
@@ -6,6 +6,7 @@ import {BehaviorSubject, ReplaySubject, Subscription} from 'rxjs';
 import Routes from '../shared/routes/routes';
 import {LocalStorageService} from "../services/local-storage.service";
 import {AudioService} from "../services/audio.service";
+import {NotificationMessagingService} from '../services/notification-messaging.service';
 
 @Component({
   selector: 'app-home',
@@ -13,7 +14,7 @@ import {AudioService} from "../services/audio.service";
   styleUrls: ['./home.component.scss'],
   providers: [AudioService]
 })
-export class HomeComponent implements OnDestroy {
+export class HomeComponent implements OnInit, OnDestroy {
 
   showMenu = false;
   bringInSlide = false;
@@ -25,7 +26,12 @@ export class HomeComponent implements OnDestroy {
   constructor(
     private router: Router,
     private localStorageService: LocalStorageService,
+    private notificationMessagingService: NotificationMessagingService
   ) {
+  }
+
+  ngOnInit() {
+    this.notificationMessagingService.getPermission();
   }
 
   logOut() {

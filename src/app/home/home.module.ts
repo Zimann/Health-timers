@@ -18,6 +18,7 @@ import {MaterialModule} from '../material/material.module';
 import {CountdownModule} from 'ngx-countdown';
 
 import {AudioService} from '../services/audio.service';
+import {NotificationMessagingService} from '../services/notification-messaging.service';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import {AudioService} from '../services/audio.service';
   ],
   providers: [
     AudioService,
+    NotificationMessagingService
   ]
 })
 export class HomeModule { }
