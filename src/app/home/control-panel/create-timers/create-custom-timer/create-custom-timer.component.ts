@@ -13,7 +13,8 @@ export class CreateCustomTimerComponent implements OnInit {
 
   customTimerForm: FormGroup;
   totalCustomTimers$ = this.crossComponentCommunicationService.totalCustomTimers$;
-  customTimerLimit = 8;
+  customTimerLimit = 5;
+  customTimerAdded = this.crossComponentCommunicationService.customTimerAdded$;
 
   @ViewChild('customMinutesTpl') customMinutesTpl : ElementRef;
   @ViewChild('customHoursTpl') customHoursTpl : ElementRef;

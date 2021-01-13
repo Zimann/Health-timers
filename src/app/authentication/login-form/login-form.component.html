@@ -6,9 +6,10 @@
       <label for="email"></label>
       <input autocomplete="username" required id="email" formControlName="email" #loginEmailRef placeholder="Email" type="email">
       <small [class.hide-input-validation]="
-        loginEmail.value === '' ||
         loginEmail.valid ||
-        loginEmail.untouched">
+        loginEmail.untouched ||
+        loginEmail.value === ''
+      ">
         Email format not valid/Use only lowercase
       </small>
       <label for="password"></label>

@@ -4,6 +4,10 @@
   height: 200px;
   display: flex;
 
+  @media screen and (max-width: 450px) {
+    margin-top: 50px;
+  }
+
   .timer-wrapper {
     padding-top: 30px;
     overflow: hidden;

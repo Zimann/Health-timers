@@ -9,18 +9,20 @@ import {Timer, CustomTimer} from '../shared/models/timer.model';
 })
 export class CrossComponentCommunicationService {
 
-  public totalCustomTimers$ = new Subject<number>();
-  public turnSoundOff$ = new BehaviorSubject<boolean>(false);
-  public resetSignUpForm$ = new Subject<boolean>();
-  public resetLoginForm$ = new Subject<boolean>();
-  public timerData$ = new Subject<Timer>();
-  public customTimerData$ = new Subject<CustomTimer>();
+  totalCustomTimers$ = new Subject<number>();
+  turnSoundOff$ = new BehaviorSubject<boolean>(false);
+  resetSignUpForm$ = new Subject<boolean>();
+  resetLoginForm$ = new Subject<boolean>();
+  timerData$ = new Subject<Timer>();
+  customTimerData$ = new Subject<CustomTimer>();
 
   private alarmOn$ = new BehaviorSubject<boolean>(false);
   private alarmOnObs$ = this.alarmOn$.asObservable();
 
   private customAlarmOn$ = new BehaviorSubject<boolean>(false);
   private customAlarmOnObs$ = this.customAlarmOn$.asObservable();
+
+  public customTimerAdded$ = new Subject<boolean>();
 
   setAlarmState(alarmState: boolean) {
     this.alarmOn$.next(alarmState);

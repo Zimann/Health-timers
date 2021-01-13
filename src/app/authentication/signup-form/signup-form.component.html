@@ -1,9 +1,12 @@
 <div class="signup-form-wrapper">
-  <div class="signup-form-body" [ngClass]="{'move-sign-up-form':formMoveInitiated}">
+  <div class="signup-form-body"
+       [ngClass]="{'move-sign-up-form':formMoveInitiated}"
+       [ngStyle]="{'transform': (isUserSignedUp | async) ? 'translateY(-20px)': 'translateY(0)'}"
+  >
     <h2>Sign up</h2>
     <form [formGroup] = signUpForm (ngSubmit)="onSubmitSignUp()">
       <label for="email_sign_up"></label>
-      <input autocomplete="username" required id="email_sign_up" formControlName="email" placeholder="Email" type="email">
+      <input autocomplete="username" required id="email_sign_up" formControlName="email"  #signupEmailRef placeholder="Email" type="email">
       <small [class.hide-input-validation]="
         signUpEmail.value === '' ||
         signUpEmail.valid ||
@@ -27,7 +30,12 @@
   </div>
 </div>
 <div class="notification-messages signup-messages">
-  <p *ngIf="(isUserSignedUp | async) === true">Thank you for joining us!<br> All you have to do now is log in on the left side.</p>
+  <p *ngIf="(isUserSignedUp | async) === true">
+    Thank you for joining us!
+    <br>
+    All you have to do now is log in<span class="mobile-sign-up-message">.</span>
+    <span class="desktop-tablet-sign-up-message">on the left side.</span>
+  </p>
 
   <!--  hide the error message on form swap and show it based on signup state-->
   <p class="submission-error" *ngIf="formMoveInitiated">{{ (isUserSignedUp | async) !== true ? (isUserSignedUp | async) : null }}</p>

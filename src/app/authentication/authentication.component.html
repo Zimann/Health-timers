@@ -1,6 +1,6 @@
 <div class="form-wrapper">
   <div class="form-body">
-    <app-login-form [formMoveInitiated]=initiateSlide></app-login-form>
+    <app-login-form [ngClass]="{'move-log--in-wrapper-mobile':initiateSlide}" [formMoveInitiated]=initiateSlide></app-login-form>
     <app-signup-form [formMoveInitiated]=initiateSlide ></app-signup-form>
     <app-form-action-texts (moveForms)="moveForms($event)"></app-form-action-texts>
   </div>

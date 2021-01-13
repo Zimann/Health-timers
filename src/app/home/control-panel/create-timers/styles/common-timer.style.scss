@@ -50,6 +50,14 @@ $control-panel-text-size: 20px;
       border-bottom-right-radius: 20px;
     }
 
+    select {
+
+      @media screen and (max-width: 450px) {
+        -webkit-appearance: none;
+        background: no-repeat #41c7af url("data:image/svg+xml;utf8,<svg fill='black' height='15' viewBox='0 0 24 24' width='101' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+      }
+    }
+
     .button-wrapper {
       width: 90%;
       border-top: 2px solid $base-green-color;
@@ -66,8 +74,9 @@ $control-panel-text-size: 20px;
         margin-top: 20px;
         border-radius: 8px;
         padding: 5px;
-        transition: all .2s linear;
         border: none;
+
+        @include transition-blueprint(.2s);
 
         &:focus {
           border: 1px solid $base-text-color;

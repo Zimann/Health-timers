@@ -35,7 +35,7 @@ $control-panel-text-size: 20px;
 
         &:disabled {
           background-color: lightgray;
-          cursor: not-allowed;
+          cursor: $disabled-cursor;
         }
       }
     }

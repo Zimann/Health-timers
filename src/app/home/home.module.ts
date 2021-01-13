@@ -9,7 +9,7 @@ import {ProfileSettingsComponent} from './control-panel/profile-settings/profile
 import {ControlPanelComponent} from './control-panel/control-panel.component';
 import {TimerColumnComponent} from './timers-container/timer-column/timer-column.component';
 import {CreateTimerComponent} from './control-panel/create-timers/create-timer/create-timer.component';
-import {OptionsSlideComponent} from './control-panel/options-slide/options-slide';
+import {OptionsSlideComponent} from './control-panel/options-slide/options-slide.component';
 import {CreateCustomTimerComponent} from './control-panel/create-timers/create-custom-timer/create-custom-timer.component';
 import { CustomTimerContainerComponent } from './custom-timers-container/custom-timer-container.component';
 

@@ -10,9 +10,7 @@ import Routes from '../../../shared/routes/routes';
 })
 export class ProfileSettingsComponent implements OnInit {
 
-  @Output() profileEmitter = new EventEmitter<boolean>();
   @Input() displayMenu: boolean;
-  settingsToggler: boolean = true;
 
   constructor(private router: Router) {
   }
@@ -24,10 +22,4 @@ export class ProfileSettingsComponent implements OnInit {
     localStorage.clear();
     this.router.navigate([Routes.AUTHENTICATION]);
   }
-
-  showSettings() {
-      this.profileEmitter.emit(this.settingsToggler);
-      this.settingsToggler = !this.settingsToggler;
-  }
-
 }

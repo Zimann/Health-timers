@@ -1,9 +1,9 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AuthService } from '../../services/auth.service';
-import { CrossComponentCommunicationService } from '../../services/cross-component-communication.service';
-import { ReplaySubject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import {Component, ElementRef, Input, OnDestroy, OnInit, ViewChild} from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {AuthService} from '../../services/auth.service';
+import {CrossComponentCommunicationService} from '../../services/cross-component-communication.service';
+import {Subject} from 'rxjs';
+import {takeUntil} from 'rxjs/operators';
 
 @Component({
   selector: 'app-signup-form',
@@ -19,7 +19,9 @@ export class SignupFormComponent implements OnInit, OnDestroy {
   public loaderSub = this.authService.signUpLoaderSubj;
   public signUpForm: FormGroup;
 
-  private destroyed$ = new ReplaySubject(1);
+  private destroyed$ = new Subject();
+
+  @ViewChild('signupEmailRef') signupEmailRef: ElementRef;
 
   constructor(private formBuild: FormBuilder,
               private authService: AuthService,
@@ -27,7 +29,9 @@ export class SignupFormComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.crossComponentService.resetSignUpForm$.pipe(takeUntil(this.destroyed$)).subscribe(data => {
+    this.crossComponentService.resetSignUpForm$.pipe(
+      takeUntil(this.destroyed$),
+    ).subscribe(data => {
       if (data) {
         this.signUpForm.reset();
       }
@@ -56,6 +60,8 @@ export class SignupFormComponent implements OnInit, OnDestroy {
 
   onSubmitSignUp() {
     this.authService.signUpUser(this.signUpEmail.value, this.signUpPassword.value);
+    this.signupEmailRef.nativeElement.focus();
+    this.signupEmailRef.nativeElement.blur();
     this.signUpForm.reset();
   }
 

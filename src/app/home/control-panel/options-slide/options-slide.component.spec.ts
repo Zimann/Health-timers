@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { OptionsSlideComponent } from './options-slide';
+import { OptionsSlideComponent } from './options-slide.component';
 
 describe('OptionsSlideComponent', () => {
   let component: OptionsSlideComponent;

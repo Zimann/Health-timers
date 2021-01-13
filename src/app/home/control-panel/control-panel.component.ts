@@ -18,10 +18,10 @@ import {AlarmTypes} from '../../shared/models/timer.model';
 export class ControlPanelComponent implements OnInit {
 
   showMenu = false;
-  bringInSlide = false;
   alarmState$: Observable<boolean>;
   customAlarmState$: Observable<boolean>;
   alarmTypes = AlarmTypes;
+  toggleTimerControl = false;
 
   outSideClickSubj = new Subscription();
   listenForOutsideClicks$ = fromEvent(document, 'click');
@@ -37,14 +37,6 @@ export class ControlPanelComponent implements OnInit {
     this.localStorageService.trackDepartureTime(this.destroyed$);
     this.alarmState$ = this.crossComponentService.setAlarmState(false);
     this.customAlarmState$ = this.crossComponentService.setCustomAlarmState(false);
-  }
-
-  showProfileSection(data: boolean) {
-    this.bringInSlide = data;
-  }
-
-  setSlidingState(): boolean {
-    return this.bringInSlide;
   }
 
   showSettingsMenu() {
@@ -73,6 +65,10 @@ export class ControlPanelComponent implements OnInit {
     }
       this.audioService.stopAudio(alarmType);
   };
+
+  showMobileControlPanel() {
+    this.toggleTimerControl = !this.toggleTimerControl;
+  }
 
   ngOnDestroy(): void {
     this.destroyed$.next(true);

@@ -3,10 +3,7 @@
 
 
 section {
-  transform: translateX(-400px);
   text-align: center;
-  transition: 0.5s ease-in-out;
-  will-change: translate;
 
   hr {
     border-width: 0;
@@ -48,6 +45,3 @@ section {
   }
 }
 
-.bring-in-options {
-  transform: translateX(0);
-}

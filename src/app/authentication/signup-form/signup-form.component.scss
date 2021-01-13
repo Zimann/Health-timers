@@ -8,21 +8,19 @@
   background: white;
 
   .signup-form-body {
-    transition: all 0.6s ease-in-out;
     transition-delay: .05s;
     width: 100%;
     transform: translateZ(0);
     overflow: hidden;
     margin-left: -350px;
 
+    @include transition-blueprint(.6s);
+
+    @media screen and (max-width: 450px) {
+      margin-left: 0;
+    }
+
     small {
-      //&:nth-of-type(1) {
-      //  margin-top: 36px;
-      //}
-      //
-      //&:nth-of-type(2) {
-      //  margin-top: 97px;
-      //}
 
       &:nth-of-type(3) {
         margin-top: 157px;
@@ -33,5 +31,23 @@
 
 .signup-messages {
   bottom: 30px;
+
+  @media screen and (max-width: 450px) {
+    bottom: 50px;
+  }
+
+  .mobile-sign-up-message {
+
+    @media screen and (min-width: 450px) {
+      display: none;
+    }
+  }
+
+  .desktop-tablet-sign-up-message {
+
+    @media screen and (max-width: 450px) {
+      display: none;
+    }
+  }
 }
 

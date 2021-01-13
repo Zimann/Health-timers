@@ -13,6 +13,16 @@ $default-transition: all .1s linear;
 $base-font-size: 20px;
 $smaller-base-font-size: $base-font-size - 2px;
 $general-font-family: Roboto, "Helvetica Neue", sans-serif;
+$disabled-cursor: not-allowed;
+
+@mixin transition-blueprint($time) {
+  transition: all $time ease-in-out;
+}
+
+@mixin square-size($width, $height: $width) {
+  width: $width;
+  height: $height;
+}
 
 countdown {
   padding: 10px 25px;

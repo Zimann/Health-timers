@@ -2,13 +2,13 @@
   <div class="profile-area">
     <div class="profile-content-wrapper">
       <i class="fas fa-cogs" (click)=showSettingsMenu()></i>
+      <i class="far fa-clock" (click)=showMobileControlPanel()></i>
     </div>
         <app-profile-settings
-          (profileEmitter)="showProfileSection($event)"
           [displayMenu]="showMenu"
         ></app-profile-settings>
   </div>
-  <div class="control-content">
+  <div class="control-content" [ngClass]="{'off-screen-timer-controls': toggleTimerControl}">
     <app-create-timer></app-create-timer>
     <button
       *ngIf="alarmState$ | async"
@@ -24,9 +24,7 @@
     <div class="stop-alarm-container">
 
     </div>
-    <app-options-slide
-      [slideIn]="setSlidingState()"
-      (slideOutEmitter)="showProfileSection($event)">
+    <app-options-slide>
     </app-options-slide>
   </div>
 </section>

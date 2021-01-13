@@ -24,8 +24,19 @@
       border-radius: 5px;
       background: $base-green-color;
 
+      @media screen and (max-width: 450px) {
+        font-size: 13px;
+        padding: 10px;
+        max-width: 70px;
+      }
+
       i {
         font-size: 20px;
+
+        @media screen and (max-width: 450px) {
+          font-size: 11px;
+          padding-left: 6px;
+        }
       }
 
       p {
