@@ -1,4 +1,4 @@
-import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild, EventEmitter} from '@angular/core';
 import {FormBuilder, FormGroup} from "@angular/forms";
 
 import {CreateTimerService} from "../services/create-timer.service";
@@ -14,7 +14,7 @@ export class CreateCustomTimerComponent implements OnInit {
   customTimerForm: FormGroup;
   totalCustomTimers$ = this.crossComponentCommunicationService.totalCustomTimers$;
   customTimerLimit = 5;
-  customTimerAdded = this.crossComponentCommunicationService.customTimerAdded$;
+  customTimerAdded = new EventEmitter<boolean>();
 
   @ViewChild('customMinutesTpl') customMinutesTpl : ElementRef;
   @ViewChild('customHoursTpl') customHoursTpl : ElementRef;
@@ -76,6 +76,11 @@ export class CreateCustomTimerComponent implements OnInit {
       timerDescription: this.timerDescription
     })
     this.customTimerForm.reset();
+
+    this.customTimerAdded.emit(true);
+    setTimeout(() => {
+      this.customTimerAdded.emit(false);
+    }, 2000);
   }
 
 }

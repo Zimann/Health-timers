@@ -22,8 +22,6 @@ export class CrossComponentCommunicationService {
   private customAlarmOn$ = new BehaviorSubject<boolean>(false);
   private customAlarmOnObs$ = this.customAlarmOn$.asObservable();
 
-  public customTimerAdded$ = new Subject<boolean>();
-
   setAlarmState(alarmState: boolean) {
     this.alarmOn$.next(alarmState);
     return this.alarmOnObs$;

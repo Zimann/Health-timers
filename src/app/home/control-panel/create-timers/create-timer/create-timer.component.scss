@@ -1,3 +1,8 @@
 @import '../styles/common-timer.style';
 
+p {
+  &.timer-confirmation {
+    font-size: 15px;
+  }
+}
 

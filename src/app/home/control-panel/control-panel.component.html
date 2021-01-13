@@ -2,7 +2,8 @@
   <div class="profile-area">
     <div class="profile-content-wrapper">
       <i class="fas fa-cogs" (click)=showSettingsMenu()></i>
-      <i class="far fa-clock" (click)=showMobileControlPanel()></i>
+      <i *ngIf="!toggleTimerControl" class="far fa-clock" (click)=showMobileControlPanel()></i>
+      <i *ngIf="toggleTimerControl" class="fas fa-times" (click)=showMobileControlPanel()></i>
     </div>
         <app-profile-settings
           [displayMenu]="showMenu"
@@ -14,8 +15,6 @@
       *ngIf="alarmState$ | async"
       class="stop-alarm"
       (click)="hideAlarmButton(alarmTypes.REGULAR)">Stop alarm</button>
-    <!--      Add an icon here which will have an animation-->
-    <!--      <i></i>-->
     <app-create-custom-timer></app-create-custom-timer>
     <button
       *ngIf="customAlarmState$ | async"

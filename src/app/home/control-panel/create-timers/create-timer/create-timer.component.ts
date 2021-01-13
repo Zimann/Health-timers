@@ -1,4 +1,4 @@
-import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild, EventEmitter} from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
 import { CreateTimerService } from '../services/create-timer.service';
@@ -11,6 +11,7 @@ import { CreateTimerService } from '../services/create-timer.service';
 export class CreateTimerComponent implements OnInit {
 
   timerForm: FormGroup;
+  timerAdded = new EventEmitter<boolean>();
 
   @ViewChild('minutesTpl') minutesTpl : ElementRef;
   @ViewChild('hoursTpl') hoursTpl : ElementRef;
@@ -70,6 +71,11 @@ export class CreateTimerComponent implements OnInit {
       timerType: this.timerType
     });
     this.timerForm.reset();
+
+    this.timerAdded.emit(true);
+    setTimeout(() => {
+      this.timerAdded.emit(false);
+    }, 2000);
   }
 
 }

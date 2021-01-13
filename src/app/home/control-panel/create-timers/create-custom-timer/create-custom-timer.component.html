@@ -22,6 +22,7 @@
 
 </form>
 
+<p class="timer-confirmation" *ngIf="customTimerAdded | async">Custom Timer added!</p>
 <p class="timer-limit-warning" *ngIf="(totalCustomTimers$ | async) >= customTimerLimit">
   You have reached the custom timer limit. <br> Please delete one to continue adding more timers.
 </p>
