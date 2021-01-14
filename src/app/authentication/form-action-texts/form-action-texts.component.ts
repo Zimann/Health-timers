@@ -24,7 +24,7 @@ export class FormActionTextsComponent implements OnInit {
   toggleFormMovements() {
 
     // used to reset forms on sliding
-    if (!this.slideElements) {
+    if (this.slideElements) {
       this.crossComponentService.resetLoginForm$.next(true);
     } else {
       this.crossComponentService.resetSignUpForm$.next(true);

@@ -50,6 +50,10 @@
 
   form {
 
+    button {
+      font-size: 15px;
+    }
+
     &.bring-in-forgotten {
       transform: translateX(0) !important;
     }
