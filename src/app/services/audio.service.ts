@@ -4,7 +4,7 @@ import {AlarmTypes} from '../shared/models/timer.model';
 @Injectable()
 export class AudioService {
 
-  readonly audioSrc: string = 'assets/audio/timer-alarm.mp3';
+  readonly audioSrc: string = '/Health-timers/assets/audio/timer-alarm.mp3';
 
   private audio: HTMLAudioElement;
   private alarms: HTMLAudioElement[] = [];
