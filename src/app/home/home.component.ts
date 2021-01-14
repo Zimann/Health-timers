@@ -33,10 +33,6 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.notificationMessagingService.getPermission();
-
-    this.route.url.subscribe((url: Params) => {
-      console.log(this.router.url);
-    });
   }
 
   logOut() {
