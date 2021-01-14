@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { CreateCustomTimerComponent } from './create-custom-timer.component';
 
@@ -6,7 +6,7 @@ describe('CreateCustomTimerComponent', () => {
   let component: CreateCustomTimerComponent;
   let fixture: ComponentFixture<CreateCustomTimerComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ CreateCustomTimerComponent ]
     })

@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { OptionsSlideComponent } from './options-slide.component';
 
@@ -6,7 +6,7 @@ describe('OptionsSlideComponent', () => {
   let component: OptionsSlideComponent;
   let fixture: ComponentFixture<OptionsSlideComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ OptionsSlideComponent ]
     })
