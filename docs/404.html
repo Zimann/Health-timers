@@ -12,5 +12,12 @@
   <link rel="stylesheet" href="styles.e5d78902ee26b85961fb.css"></head>
 <body>
 <app-root></app-root>
-<script src="runtime-es2015.39c3cff2b5c1b7eb54f2.js" type="module"></script><script src="runtime-es5.39c3cff2b5c1b7eb54f2.js" nomodule="" defer=""></script><script src="polyfills-es5.ad4deb6f343bc91bbf0e.js" nomodule="" defer=""></script><script src="polyfills-es2015.817fefb838c2269531ba.js" type="module"></script><script src="main-es2015.2391dd7cb73e7911c4ab.js" type="module"></script><script src="main-es5.2391dd7cb73e7911c4ab.js" nomodule="" defer=""></script></body>
+<script src="runtime-es2015.c61ca3065f4a5f0fa95f.js" type="module"></script><script src="runtime-es5.c61ca3065f4a5f0fa95f.js" nomodule="" defer=""></script><script src="polyfills-es5.ad4deb6f343bc91bbf0e.js" nomodule="" defer=""></script><script src="polyfills-es2015.817fefb838c2269531ba.js" type="module"></script><script src="main-es2015.2391dd7cb73e7911c4ab.js" type="module"></script><script src="main-es5.2391dd7cb73e7911c4ab.js" nomodule="" defer=""></script></body>
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('https://zimann.github.io/Health-timers/firebase-messaging-sw.js', {scope: 'https://zimann.github.io/Health-timers/firebase-cloud-messaging-push-scope'})
+      .then(function(registration) {
+        console.log('Registration successful, scope is:', registration.scope);
+      })}
+</script>
 </html>
