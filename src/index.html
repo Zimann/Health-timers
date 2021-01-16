@@ -12,5 +12,10 @@
 </head>
 <body>
   <app-root></app-root>
+  <script>
+    navigator.serviceWorker.register('./firebase-messaging-sw.js')
+    .then((registration) => {
+      messaging.useServiceWorker(registration);
+    });</script>
 </body>
 </html>
