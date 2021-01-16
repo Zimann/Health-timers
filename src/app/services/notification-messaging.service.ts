@@ -23,7 +23,6 @@ export class NotificationMessagingService {
   getPermission() {
     this.afMessaging.requestPermission.pipe(take(1)).toPromise()
       .then(() => {
-        console.log('Notification permission granted');
         return this.afMessaging.getToken.toPromise();
       }).then(token => {
       this.token = token;
