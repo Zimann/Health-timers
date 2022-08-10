@@ -16,7 +16,7 @@ export class OptionsSlideComponent {
   ) { }
 
 
-  startNotificationProcess(checkState : boolean) {
+  startNotificationProcess(checkState: boolean) {
       this.crossComponentCommunicationService.turnSoundOff$.next(checkState);
   }
 

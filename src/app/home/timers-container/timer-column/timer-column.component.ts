@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {TimerColumn} from "../../../shared/models/timer.model";
+import {TimerColumn} from '../../../shared/models/timer.model';
 
 @Component({
   selector: 'app-timer-column',

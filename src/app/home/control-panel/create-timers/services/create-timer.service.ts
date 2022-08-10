@@ -21,7 +21,7 @@ export class CreateTimerService {
         minutes: data.minutes,
         timerType: data.timerType
       });
-  };
+  }
 
   collectCustomTimerData(data: CustomTimer) {
     const customTimerData = {

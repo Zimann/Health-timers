@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 
-import {Countdown, CountDownTimer, CustomCountDownTimer, HourConversionUnits} from "../shared/models/timer.model";
+import {Countdown, CountDownTimer, CustomCountDownTimer, HourConversionUnits} from '../shared/models/timer.model';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +14,7 @@ export class CountdownService {
   public calculateCountDownTime(data: CountDownTimer | CustomCountDownTimer): Countdown {
     return {
       leftTime: CountdownService.calculateRemainingTime(data)
-    }
+    };
   }
 
 }
