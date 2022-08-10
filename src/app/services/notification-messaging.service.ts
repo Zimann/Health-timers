@@ -34,8 +34,8 @@ export class NotificationMessagingService {
   pushNotification(timerDescription: string) {
     const headers = {
       'Content-Type': 'application/json',
-      'Authorization': `key=${FireBaseAPIDetails.serverKey}`
-    }
+      Authorization: `key=${FireBaseAPIDetails.serverKey}`
+    };
 
     const bodyReq: NotificationBody = {
       to: this.token,

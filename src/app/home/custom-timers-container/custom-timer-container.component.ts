@@ -30,6 +30,7 @@ export class CustomTimerContainerComponent implements OnInit {
         this.customCountdownTimers.push({...data, ...this.countDownService.calculateCountDownTime(data)});
         this.crossComponentCommunicationService.totalCustomTimers$.next(this.customCountdownTimers.length);
       }
+      console.log(this.customCountdownTimers);
     });
   }
 

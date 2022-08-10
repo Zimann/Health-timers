@@ -1,5 +1,5 @@
 <div class="login-form-wrapper">
-  <div class="login-form-body" [ngStyle]="{'transform': bringInForgottenPass ? 'translateY(-50px)': 'translateY(0)'}"
+  <div class="login-form-body"
        [ngClass]="{'move-log-in-form':formMoveInitiated}">
     <h2>Log in</h2>
     <form [formGroup]=loginForm (ngSubmit)="onSubmitLogin()">
@@ -28,7 +28,6 @@
       </button>
       <span *ngIf="(loaderSub | async) === false" class="loader"></span>
     </form>
-<!--    <p (click)="bringInForgottenPassword()" class="forgotten-password">Forgot password?</p>-->
 
     <form class="forgotten-form" [ngClass]="{'bring-in-forgotten':!formMoveInitiated && bringInForgottenPass}"
           [formGroup]="forgottenPassForm" (ngSubmit)="onSubmitForgottenPass()">

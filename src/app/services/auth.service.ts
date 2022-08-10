@@ -15,15 +15,16 @@ import {LocalStorageKeys} from '../shared/models/localStorageKeys';
 })
 export class AuthService {
 
+  private static failedSignUpMessage = ResponsesMessages.FAILED_SIGNUP_MESSAGE;
+  private static failedLogInMessage = ResponsesMessages.FAILED_LOGIN_MESSAGE;
+  private static signUpEndpoint = `${FireBaseAPIDetails.signUpEndpoint}${FireBaseAPIDetails.firebaseAPIKey}`;
+  private static logInEndpoint = `${FireBaseAPIDetails.logInEndpoint}${FireBaseAPIDetails.firebaseAPIKey}`;
+
   signedUpSubj = new Subject();
   loggedInSubj = new Subject();
   signUpLoaderSubj = new Subject();
   logInLoaderSubj = new Subject();
 
-  private static failedSignUpMessage = ResponsesMessages.FAILED_SIGNUP_MESSAGE;
-  private static failedLogInMessage = ResponsesMessages.FAILED_LOGIN_MESSAGE;
-  private static signUpEndpoint = `${FireBaseAPIDetails.signUpEndpoint}${FireBaseAPIDetails.firebaseAPIKey}`;
-  private static logInEndpoint = `${FireBaseAPIDetails.logInEndpoint}${FireBaseAPIDetails.firebaseAPIKey}`;
 
   constructor(
     private http: HttpClient,
@@ -77,8 +78,12 @@ export class AuthService {
 
   // logic to keep the user logged in even when opening a separate tab based on the token expiry value
   calculateRemainingLoginTime() {
-    const timeDif = Number(localStorage.getItem(LocalStorageKeys.DEPARTURE_MOMENT_DATE)) - Number(localStorage.getItem(LocalStorageKeys.REQUEST_MOMENT_DATE));
-    if (timeDif < Number(localStorage.getItem(LocalStorageKeys.TOKEN_EXPIRY)) && localStorage.getItem(LocalStorageKeys.REQUEST_MOMENT_DATE)) {
+    const timeDif = Number(
+      localStorage.getItem(LocalStorageKeys.DEPARTURE_MOMENT_DATE)) - Number(localStorage.getItem(LocalStorageKeys.REQUEST_MOMENT_DATE)
+    );
+    if (timeDif < Number(
+      localStorage.getItem(LocalStorageKeys.TOKEN_EXPIRY)) && localStorage.getItem(LocalStorageKeys.REQUEST_MOMENT_DATE)
+    ) {
       this.router.navigate([Routes.HOME]);
     }
   }
